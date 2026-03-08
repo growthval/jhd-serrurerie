@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Serrurier Charente-Maritime 24h/24 – JHD Serrurerie</title>
-    <meta name="description" content="JHD Serrurerie, votre serrurier en Charente-Maritime. Dépannage urgence en 20 min à La Rochelle, Île de Ré, Niort et Poitiers. Tarifs assurances. 07 87 37 28 81.">
+    <meta name="description" content="JHD Serrurerie, votre serrurier en Charente-Maritime. Dépannage urgence en 20 min à La Rochelle, Île de Ré, Niort et Poitiers. Tarifs agréés assurances. 07 87 37 28 81.">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="JHD Serrurerie">
     <meta property="og:title" content="Serrurier Charente-Maritime 24h/24 – JHD Serrurerie">
     <meta property="og:description" content="Dépannage urgence en 20 min à La Rochelle, Île de Ré, Niort et Poitiers. Tarifs agréés assurances. Appelez le 07 87 37 28 81.">
     <meta property="og:url" content="https://jhd-serrurerie.fr/">
-    <meta property="og:image" content="https://jhd-serrurerie.fr/brand_assets/logo%20jhd.svg">
+    <meta property="og:image" content="https://jhd-serrurerie.fr/brand_assets/og-image.png">
     <meta property="og:locale" content="fr_FR">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Serrurier Charente-Maritime 24h/24 – JHD Serrurerie">
@@ -36,11 +36,11 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
+        "@type": "Locksmith",
         "@id": "https://jhd-serrurerie.fr/#business",
         "name": "JHD Serrurerie",
-        "logo": "https://jhd-serrurerie.fr/brand_assets/logo%20jhd.svg",
-        "image": "https://jhd-serrurerie.fr/brand_assets/logo%20jhd.svg",
+        "logo": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
+        "image": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
         "telephone": "+33787372881",
         "url": "https://jhd-serrurerie.fr",
         "description": "Serrurier depannage urgence en Charente-Maritime. Ouverture de porte, changement de serrure, mise en securite. Intervention en 20 min a La Rochelle, Ile de Re, Niort et Poitiers.",
@@ -57,6 +57,54 @@
             "closes": "23:59"
         },
         "priceRange": "$$"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Quel est votre delai d'intervention en Charente-Maritime ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "JHD Serrurerie intervient en moins de 20 minutes dans toute la Charente-Maritime : La Rochelle, Ile de Re, Niort et Poitiers. Nos artisans sont localises dans chaque zone, disponibles 24h/24 et 7j/7."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Quels sont vos tarifs pour un depannage serrurier ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Nos tarifs sont agrees par les assurances habitation. Une ouverture de porte claquee demarre a 80 euros, une porte verrouillee a 120 euros, un changement de serrure a 150 euros. Le devis est etabli gratuitement sur place."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Intervenez-vous la nuit et le week-end ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oui, JHD Serrurerie est disponible 24h/24, 7j/7, y compris les week-ends et jours feries. Notre service d'urgence ne s'arrete jamais."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Etes-vous agrees par les assurances ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Oui, nos factures sont conformes aux baremes assurances (MAAF, AXA, MACIF, MATMUT, Groupama) pour vous permettre d'etre rembourse dans le cadre de votre garantie assistance ou bris de serrure."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Pouvez-vous ouvrir une porte sans la casser ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Dans la grande majorite des cas, oui. Nos serruriers utilisent des techniques non destructives (crochetage, decodage) qui preservent votre serrure et votre porte. La casse ne se produit qu'en dernier recours."
+                }
+            }
+        ]
     }
     </script>
     <style>
@@ -88,6 +136,10 @@
         .nav-link:hover::after, .nav-link.active::after { width:100%; }
         .card-lift { transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), opacity 0.35s ease; }
         .card-lift:hover { transform: translateY(-6px); }
+        details summary::-webkit-details-marker { display: none; }
+        details summary { list-style: none; }
+        details[open] .faq-chevron { transform: rotate(180deg); }
+        .faq-chevron { transition: transform 0.3s cubic-bezier(0.22,1,0.36,1); }
         html { scroll-behavior:smooth; scroll-padding-top:80px; }
         body { font-family:'Inter',sans-serif; }
     </style>
@@ -106,7 +158,7 @@
             <div class="max-w-7xl mx-auto flex items-center justify-between px-4 lg:px-6 py-3">
                 <!-- Left: Logo -->
                 <a href="index.html" class="shrink-0">
-                    <img src="brand_assets/logo jhd.svg" alt="JHD Serrurerie" class="h-16 w-auto">
+                    <img src="brand_assets/logo-jhd.svg" alt="JHD Serrurerie" class="h-16 w-auto">
                 </a>
                 <!-- Center: Nav links (desktop) -->
                 <nav class="hidden lg:flex items-center gap-7" aria-label="Navigation principale">
@@ -219,8 +271,8 @@
         <section id="zones" class="bg-surface py-20 md:py-28 px-4 md:px-8">
             <div class="max-w-6xl mx-auto">
                 <div class="text-center mb-14 scroll-reveal">
-                    <span class="inline-block text-cta font-semibold text-sm uppercase tracking-wider mb-3">Nos zones</span>
-                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-forest tracking-[-0.02em]">Intervention rapide dans toute la region</h2>
+                    <span class="inline-block text-cta font-semibold text-sm uppercase tracking-wider mb-3">Zones d'intervention</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-forest tracking-[-0.02em]">Intervention rapide dans toute la Charente-Maritime</h2>
                     <p class="text-gray-600 mt-3 text-lg max-w-xl mx-auto">Nos artisans serruriers couvrent 4 zones strategiques pour une arrivee en 20 minutes maximum.</p>
                 </div>
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -282,7 +334,7 @@
                 <!-- Section header -->
                 <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-16 scroll-reveal">
                     <div>
-                        <span class="text-cta text-xs font-bold uppercase tracking-[0.2em] mb-3 block">Notre Expertise</span>
+                        <span class="text-cta text-xs font-bold uppercase tracking-[0.2em] mb-3 block">Nos interventions</span>
                         <h2 class="font-heading text-4xl md:text-5xl font-extrabold text-gray-900 leading-[1.05] tracking-[-0.02em]">INTERVENTIONS<br><span class="text-cta">PRIORITAIRES</span></h2>
                     </div>
                     <p class="lg:max-w-xs text-gray-500 text-base leading-relaxed">Une equipe d'experts mobilisee 24h/24 pour votre securite et votre tranquillite.</p>
@@ -345,7 +397,7 @@
         <section id="confiance" class="bg-white py-20 md:py-28 px-4 md:px-8">
             <div class="max-w-6xl mx-auto">
                 <div class="text-center mb-14 scroll-reveal">
-                    <span class="inline-block text-cta font-semibold text-sm uppercase tracking-wider mb-3">Confiance</span>
+                    <span class="inline-block text-cta font-semibold text-sm uppercase tracking-wider mb-3">Pourquoi nous choisir</span>
                     <h2 class="font-heading text-3xl md:text-4xl font-bold text-forest tracking-[-0.02em]">Pourquoi choisir JHD Serrurerie ?</h2>
                 </div>
                 <!-- Trust cards -->
@@ -425,6 +477,63 @@
             </div>
         </section>
 
+        <!-- FAQ -->
+        <section id="faq" class="bg-surface py-20 md:py-28 px-4 md:px-8">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-14 scroll-reveal">
+                    <span class="inline-block text-cta font-semibold text-sm uppercase tracking-wider mb-3">Questions frequentes</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-forest tracking-[-0.02em]">FAQ Serrurier Charente-Maritime</h2>
+                </div>
+                <div class="space-y-4">
+                    <details class="scroll-reveal bg-white rounded-2xl shadow-[0_2px_12px_rgba(27,67,50,0.04)] group" open>
+                        <summary class="flex items-center justify-between cursor-pointer p-6 md:p-7 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest rounded-2xl">
+                            <h3 class="font-heading text-lg font-bold text-forest pr-4">Quel est votre delai d'intervention en Charente-Maritime ?</h3>
+                            <svg class="faq-chevron w-5 h-5 text-forest flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-6 md:px-7 pb-6 md:pb-7">
+                            <p class="text-gray-600 leading-[1.7]">JHD Serrurerie intervient en moins de 20 minutes dans toute la Charente-Maritime : La Rochelle, Ile de Re, Niort et Poitiers. Nos artisans sont localises dans chaque zone, disponibles 24h/24 et 7j/7.</p>
+                        </div>
+                    </details>
+                    <details class="scroll-reveal bg-white rounded-2xl shadow-[0_2px_12px_rgba(27,67,50,0.04)] group" style="transition-delay: 0.1s">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 md:p-7 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest rounded-2xl">
+                            <h3 class="font-heading text-lg font-bold text-forest pr-4">Quels sont vos tarifs pour un depannage serrurier ?</h3>
+                            <svg class="faq-chevron w-5 h-5 text-forest flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-6 md:px-7 pb-6 md:pb-7">
+                            <p class="text-gray-600 leading-[1.7]">Nos tarifs sont agrees par les assurances habitation. Une ouverture de porte claquee demarre a 80€, une porte verrouillee a 120€, un changement de serrure a 150€. Le devis est gratuit sur place, sans engagement avant intervention.</p>
+                        </div>
+                    </details>
+                    <details class="scroll-reveal bg-white rounded-2xl shadow-[0_2px_12px_rgba(27,67,50,0.04)] group" style="transition-delay: 0.2s">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 md:p-7 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest rounded-2xl">
+                            <h3 class="font-heading text-lg font-bold text-forest pr-4">Intervenez-vous la nuit et le week-end ?</h3>
+                            <svg class="faq-chevron w-5 h-5 text-forest flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-6 md:px-7 pb-6 md:pb-7">
+                            <p class="text-gray-600 leading-[1.7]">Oui, JHD Serrurerie est disponible 24h/24, 7j/7, y compris les week-ends et jours feries. Notre service d'urgence ne s'arrete jamais.</p>
+                        </div>
+                    </details>
+                    <details class="scroll-reveal bg-white rounded-2xl shadow-[0_2px_12px_rgba(27,67,50,0.04)] group" style="transition-delay: 0.3s">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 md:p-7 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest rounded-2xl">
+                            <h3 class="font-heading text-lg font-bold text-forest pr-4">Etes-vous agrees par les assurances ?</h3>
+                            <svg class="faq-chevron w-5 h-5 text-forest flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-6 md:px-7 pb-6 md:pb-7">
+                            <p class="text-gray-600 leading-[1.7]">Oui, nos factures sont conformes aux baremes assurances (MAAF, AXA, MACIF, MATMUT, Groupama) pour vous permettre d'etre rembourse dans le cadre de votre garantie assistance ou bris de serrure.</p>
+                        </div>
+                    </details>
+                    <details class="scroll-reveal bg-white rounded-2xl shadow-[0_2px_12px_rgba(27,67,50,0.04)] group" style="transition-delay: 0.4s">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 md:p-7 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest rounded-2xl">
+                            <h3 class="font-heading text-lg font-bold text-forest pr-4">Pouvez-vous ouvrir une porte sans la casser ?</h3>
+                            <svg class="faq-chevron w-5 h-5 text-forest flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-6 md:px-7 pb-6 md:pb-7">
+                            <p class="text-gray-600 leading-[1.7]">Dans la grande majorite des cas, oui. Nos serruriers utilisent des techniques non destructives (crochetage, decodage) qui preservent votre serrure et votre porte. La casse ne se produit qu'en dernier recours, si la serrure est trop securisee.</p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
         <!-- CTA BANNER -->
         <section class="bg-forest py-16 md:py-20 px-4 md:px-8 relative overflow-hidden">
             <div class="absolute inset-0 opacity-5">
@@ -447,7 +556,7 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
                 <div>
                     <div class="flex items-center gap-3 mb-4">
-                        <img src="brand_assets/logo jhd.svg" alt="JHD Serrurerie" class="h-10 w-auto">
+                        <img src="brand_assets/logo-jhd.svg" alt="JHD Serrurerie" class="h-10 w-auto">
                         <span class="font-heading text-xl font-bold tracking-wider">SERRURERIE</span>
                     </div>
                     <p class="text-white/50 text-sm leading-relaxed mb-4">Votre serrurier de confiance en Charente-Maritime. Depannage urgence 24h/24, 7j/7.</p>
