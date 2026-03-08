@@ -16,7 +16,8 @@
         '@media(hover:hover){.group:hover .slide-answer-row{background-position:0% center !important;color:#fff !important;}}',
         '.slide-answer-row.is-animating{background-position:0% center !important;color:#fff !important;}',
         '@keyframes pulse-cta{0%{box-shadow:0 0 0 0 rgba(232,106,16,0.7);}70%{box-shadow:0 0 0 10px rgba(232,106,16,0);}100%{box-shadow:0 0 0 0 rgba(232,106,16,0);}}',
-        '.animate-pulse-cta{animation:pulse-cta 2s cubic-bezier(0.4,0,0.6,1) infinite;}'
+        '.animate-pulse-cta{animation:pulse-cta 2s cubic-bezier(0.4,0,0.6,1) infinite;}',
+        '.scroll-reveal.opacity-100{opacity:1!important;transform:translateY(0)!important;}'
     ].join('');
     document.head.appendChild(style);
 
