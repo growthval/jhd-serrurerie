@@ -50,19 +50,38 @@
             {"@type": "City", "name": "Niort"},
             {"@type": "City", "name": "Poitiers"}
         ],
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-            "opens": "00:00",
-            "closes": "23:59"
-        },
-        "priceRange": "$",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                "opens": "00:00",
+                "closes": "23:59"
+            }
+        ],
+        "priceRange": "$$",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "La Rochelle",
             "addressRegion": "Charente-Maritime",
             "postalCode": "17000",
             "addressCountry": "FR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "46.1591",
+            "longitude": "-1.1520"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+33787372881",
+            "contactType": "customer service",
+            "availableLanguage": {"@type": "Language", "name": "French"},
+            "hoursAvailable": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                "opens": "00:00",
+                "closes": "23:59"
+            }
         }
     }
     </script>

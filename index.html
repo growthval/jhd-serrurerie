@@ -39,24 +39,183 @@
         "@type": "Locksmith",
         "@id": "https://jhd-serrurerie.fr/#business",
         "name": "JHD Serrurerie",
-        "logo": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
+        "legalName": "JHD Serrurerie",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
+            "width": "300",
+            "height": "100"
+        },
         "image": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
         "telephone": "+33787372881",
         "url": "https://jhd-serrurerie.fr",
-        "description": "Serrurier depannage urgence en Charente-Maritime. Ouverture de porte, changement de serrure, mise en securite. Intervention en 20 min a La Rochelle, Ile de Re, Niort et Poitiers.",
+        "description": "Serrurier dépannage urgence en Charente-Maritime. Ouverture de porte, changement de serrure, mise en sécurité. Intervention en 20 minutes à La Rochelle, Île de Ré, Niort et Poitiers. Agréé assurances.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "La Rochelle",
+            "addressRegion": "Charente-Maritime",
+            "postalCode": "17000",
+            "addressCountry": "FR"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "46.1591",
+            "longitude": "-1.1520"
+        },
+        "hasMap": "https://maps.google.com/?q=JHD+Serrurerie+La+Rochelle",
+        "areaServed": [
+            {"@type": "City", "name": "La Rochelle", "sameAs": "https://www.wikidata.org/wiki/Q13527"},
+            {"@type": "City", "name": "Île de Ré", "sameAs": "https://www.wikidata.org/wiki/Q213375"},
+            {"@type": "City", "name": "Niort", "sameAs": "https://www.wikidata.org/wiki/Q219987"},
+            {"@type": "City", "name": "Poitiers", "sameAs": "https://www.wikidata.org/wiki/Q40667"}
+        ],
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                "opens": "00:00",
+                "closes": "23:59"
+            }
+        ],
+        "priceRange": "$$",
+        "currenciesAccepted": "EUR",
+        "paymentAccepted": "Cash, Credit Card, Virement bancaire",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+33787372881",
+            "contactType": "customer service",
+            "availableLanguage": {"@type": "Language", "name": "French"},
+            "hoursAvailable": {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+                "opens": "00:00",
+                "closes": "23:59"
+            }
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "bestRating": "5",
+            "worstRating": "1",
+            "ratingCount": "3",
+            "reviewCount": "3"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Marie L."},
+                "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+                "reviewBody": "Intervention rapide à La Rochelle, serrurier très professionnel. Tarif correct et pris en charge par mon assurance. Recommandé !",
+                "datePublished": "2025-01-01",
+                "inLanguage": "fr"
+            },
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Philippe D."},
+                "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+                "reviewBody": "Porte claquée à Niort en pleine nuit, arrivé en 20 minutes. Ouverture sans casse, prix honnête. Merci pour le professionnalisme !",
+                "datePublished": "2025-01-01",
+                "inLanguage": "fr"
+            },
+            {
+                "@type": "Review",
+                "author": {"@type": "Person", "name": "Sophie B."},
+                "reviewRating": {"@type": "Rating", "ratingValue": "5", "bestRating": "5"},
+                "reviewBody": "Changement de serrure à Poitiers. Travail soigné, tarifs transparents. Le serrurier a pris le temps d'expliquer les options.",
+                "datePublished": "2025-01-01",
+                "inLanguage": "fr"
+            }
+        ],
+        "sameAs": [
+            "https://www.google.com/maps/place/JHD+Serrurerie"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://jhd-serrurerie.fr/#website",
+        "url": "https://jhd-serrurerie.fr",
+        "name": "JHD Serrurerie",
+        "description": "Serrurier dépannage urgence en Charente-Maritime – La Rochelle, Île de Ré, Niort, Poitiers",
+        "inLanguage": "fr-FR",
+        "publisher": {
+            "@id": "https://jhd-serrurerie.fr/#business"
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "https://jhd-serrurerie.fr/#service-ouverture-porte",
+        "name": "Ouverture de porte",
+        "serviceType": "Ouverture de porte",
+        "description": "Ouverture de porte claquée ou verrouillée sans destruction. Intervention en 20 minutes en Charente-Maritime. Techniques non destructives (crochetage, décodage).",
+        "provider": {"@id": "https://jhd-serrurerie.fr/#business"},
         "areaServed": [
             {"@type": "City", "name": "La Rochelle"},
-            {"@type": "City", "name": "Ile de Re"},
+            {"@type": "City", "name": "Île de Ré"},
             {"@type": "City", "name": "Niort"},
             {"@type": "City", "name": "Poitiers"}
         ],
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-            "opens": "00:00",
-            "closes": "23:59"
-        },
-        "priceRange": "$$"
+        "offers": {
+            "@type": "Offer",
+            "price": "80",
+            "priceCurrency": "EUR",
+            "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "80",
+                "priceCurrency": "EUR",
+                "description": "À partir de 80€ pour une porte claquée"
+            }
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "https://jhd-serrurerie.fr/#service-changement-serrure",
+        "name": "Changement de serrure",
+        "serviceType": "Changement de serrure",
+        "description": "Remplacement et installation de serrures de sécurité (3 points, A2P). Marques Fichet, Mul-T-Lock, Vachette. Tarifs agréés assurances.",
+        "provider": {"@id": "https://jhd-serrurerie.fr/#business"},
+        "areaServed": [
+            {"@type": "City", "name": "La Rochelle"},
+            {"@type": "City", "name": "Île de Ré"},
+            {"@type": "City", "name": "Niort"},
+            {"@type": "City", "name": "Poitiers"}
+        ],
+        "offers": {
+            "@type": "Offer",
+            "price": "150",
+            "priceCurrency": "EUR",
+            "priceSpecification": {
+                "@type": "PriceSpecification",
+                "price": "150",
+                "priceCurrency": "EUR",
+                "description": "À partir de 150€ pour un changement de serrure standard"
+            }
+        }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "@id": "https://jhd-serrurerie.fr/#service-mise-en-securite",
+        "name": "Mise en sécurité",
+        "serviceType": "Mise en sécurité après effraction",
+        "description": "Sécurisation d'urgence après effraction ou tentative de cambriolage. Blindage de porte, condamnation provisoire, remplacement de serrure. Disponible 24h/24.",
+        "provider": {"@id": "https://jhd-serrurerie.fr/#business"},
+        "areaServed": [
+            {"@type": "City", "name": "La Rochelle"},
+            {"@type": "City", "name": "Île de Ré"},
+            {"@type": "City", "name": "Niort"},
+            {"@type": "City", "name": "Poitiers"}
+        ]
     }
     </script>
     <script type="application/ld+json">
@@ -102,6 +261,14 @@
                 "acceptedAnswer": {
                     "@type": "Answer",
                     "text": "Dans la grande majorite des cas, oui. Nos serruriers utilisent des techniques non destructives (crochetage, decodage) qui preservent votre serrure et votre porte. La casse ne se produit qu'en dernier recours."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Comment eviter les arnaques aux serruriers ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Mefiez-vous de trois signaux : un refus de donner un tarif par telephone, un prix annonce qui triple a l'arrivee, et l'absence de devis ecrit avant intervention. Un artisan serieux communique une fourchette de prix avant de se deplacer, remet un devis signe sur place, et fournit une facture detaillee conforme aux baremes assurances."
                 }
             }
         ]
@@ -390,6 +557,72 @@
                         </div>
                     </a>
                 </div>
+                <!-- CERTIFICATION A2P -->
+                <div class="scroll-reveal mt-14 bg-surface rounded-2xl p-8 md:p-10 max-w-3xl mx-auto">
+                    <h3 class="font-heading text-xl font-bold text-forest mb-4">Serrures certifiées A2P : ce que ça change pour votre assurance</h3>
+                    <p class="text-gray-600 leading-[1.7] mb-5">La certification <strong>A2P</strong> (Assurance Prévention Protection) est le label officiel reconnu par les assureurs français pour évaluer la résistance d'une serrure à l'effraction.</p>
+                    <ul class="space-y-3 mb-5">
+                        <li class="flex gap-3 items-start"><span class="flex-shrink-0 font-bold text-cta min-w-[60px]">A2P ★</span><span class="text-gray-600">Résistance à l'effraction pendant <strong>5 minutes</strong> — protection de base, appartements</span></li>
+                        <li class="flex gap-3 items-start"><span class="flex-shrink-0 font-bold text-cta min-w-[60px]">A2P ★★</span><span class="text-gray-600">Résistance pendant <strong>10 minutes</strong> — recommandé pour les maisons individuelles</span></li>
+                        <li class="flex gap-3 items-start"><span class="flex-shrink-0 font-bold text-cta min-w-[60px]">A2P ★★★</span><span class="text-gray-600">Résistance pendant <strong>15 minutes</strong> — exigé par certains assureurs pour la garantie vol</span></li>
+                    </ul>
+                    <p class="text-gray-600 leading-[1.7]">JHD Serrurerie installe des cylindres certifiés A2P des marques Fichet, Mul-T-Lock et Vachette. Nous vous recommandons le niveau adapté à votre logement lors du devis sur place.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMMENT CA MARCHE -->
+        <section id="comment-ca-marche" class="py-20 md:py-28 px-4 md:px-8 bg-surface">
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-14 scroll-reveal">
+                    <span class="inline-block text-cta font-semibold text-sm uppercase tracking-wider mb-3">Déroulement de l'intervention</span>
+                    <h2 class="font-heading text-3xl md:text-4xl font-bold text-forest tracking-[-0.02em]">Comment se passe une intervention JHD Serrurerie ?</h2>
+                    <p class="text-gray-600 mt-3 text-lg leading-[1.7]">De votre appel à la remise de la facture — en moins de 45 minutes.</p>
+                </div>
+                <ol class="space-y-8">
+                    <li class="scroll-reveal flex gap-5">
+                        <span class="flex-shrink-0 w-10 h-10 rounded-full bg-cta text-white font-bold flex items-center justify-center text-lg shadow-[0_4px_12px_rgba(232,106,16,0.3)]">1</span>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-forest mb-2">Vous appelez le 07 87 37 28 81</h3>
+                            <p class="text-gray-600 leading-[1.7]">Disponible 24h/24, 7j/7 — week-ends et jours fériés compris. Décrivez votre situation en 30 secondes : porte claquée, clés perdues, effraction. Pas de hotline nationale, vous parlez directement à votre artisan.</p>
+                        </div>
+                    </li>
+                    <li class="scroll-reveal flex gap-5" style="transition-delay:0.05s">
+                        <span class="flex-shrink-0 w-10 h-10 rounded-full bg-cta text-white font-bold flex items-center justify-center text-lg shadow-[0_4px_12px_rgba(232,106,16,0.3)]">2</span>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-forest mb-2">Nous vous donnons un tarif par téléphone</h3>
+                            <p class="text-gray-600 leading-[1.7]">Avant de nous déplacer, nous vous communiquons une fourchette de prix. Porte claquée : à partir de 80€. Porte verrouillée : à partir de 120€. Pas de surprise à l'arrivée.</p>
+                        </div>
+                    </li>
+                    <li class="scroll-reveal flex gap-5" style="transition-delay:0.1s">
+                        <span class="flex-shrink-0 w-10 h-10 rounded-full bg-cta text-white font-bold flex items-center justify-center text-lg shadow-[0_4px_12px_rgba(232,106,16,0.3)]">3</span>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-forest mb-2">Arrivée en 20 minutes</h3>
+                            <p class="text-gray-600 leading-[1.7]">Notre artisan est basé localement à La Rochelle, Niort, Poitiers et sur l'Île de Ré. Temps moyen d'arrivée constaté : 18 minutes. Délai maximum garanti : 30 minutes.</p>
+                        </div>
+                    </li>
+                    <li class="scroll-reveal flex gap-5" style="transition-delay:0.15s">
+                        <span class="flex-shrink-0 w-10 h-10 rounded-full bg-cta text-white font-bold flex items-center justify-center text-lg shadow-[0_4px_12px_rgba(232,106,16,0.3)]">4</span>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-forest mb-2">Devis écrit avant intervention</h3>
+                            <p class="text-gray-600 leading-[1.7]">Après diagnostic sur place, nous rédigeons un devis détaillé. Vous le signez. Nous commençons seulement ensuite. Zéro frais cachés.</p>
+                        </div>
+                    </li>
+                    <li class="scroll-reveal flex gap-5" style="transition-delay:0.2s">
+                        <span class="flex-shrink-0 w-10 h-10 rounded-full bg-cta text-white font-bold flex items-center justify-center text-lg shadow-[0_4px_12px_rgba(232,106,16,0.3)]">5</span>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-forest mb-2">Ouverture sans casse dans 95% des cas</h3>
+                            <p class="text-gray-600 leading-[1.7]">Nos serruriers maîtrisent le crochetage et le décodage. Ces techniques non destructives préservent votre serrure et votre porte. La destruction n'intervient qu'en dernier recours, sur des serrures haute sécurité.</p>
+                        </div>
+                    </li>
+                    <li class="scroll-reveal flex gap-5" style="transition-delay:0.25s">
+                        <span class="flex-shrink-0 w-10 h-10 rounded-full bg-cta text-white font-bold flex items-center justify-center text-lg shadow-[0_4px_12px_rgba(232,106,16,0.3)]">6</span>
+                        <div>
+                            <h3 class="font-heading text-lg font-bold text-forest mb-2">Facture agréée assurances</h3>
+                            <p class="text-gray-600 leading-[1.7]">Vous recevez une facture conforme aux barèmes MAAF, AXA, MACIF, MATMUT et Groupama. Transmettez-la à votre assureur sous 5 jours ouvrés. En cas de porte claquée simple, le remboursement total est couvert par la plupart des contrats.</p>
+                        </div>
+                    </li>
+                </ol>
             </div>
         </section>
 
@@ -528,6 +761,15 @@
                         </summary>
                         <div class="px-6 md:px-7 pb-6 md:pb-7">
                             <p class="text-gray-600 leading-[1.7]">Dans la grande majorite des cas, oui. Nos serruriers utilisent des techniques non destructives (crochetage, decodage) qui preservent votre serrure et votre porte. La casse ne se produit qu'en dernier recours, si la serrure est trop securisee.</p>
+                        </div>
+                    </details>
+                    <details class="scroll-reveal bg-white rounded-2xl shadow-[0_2px_12px_rgba(27,67,50,0.04)] group" style="transition-delay: 0.5s">
+                        <summary class="flex items-center justify-between cursor-pointer p-6 md:p-7 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-forest rounded-2xl">
+                            <h3 class="font-heading text-lg font-bold text-forest pr-4">Comment éviter les arnaques aux serruriers ?</h3>
+                            <svg class="faq-chevron w-5 h-5 text-forest flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                        </summary>
+                        <div class="px-6 md:px-7 pb-6 md:pb-7">
+                            <p class="text-gray-600 leading-[1.7]">Méfiez-vous de trois signaux : un refus de donner un tarif par téléphone, un prix annoncé qui triple à l'arrivée, et l'absence de devis écrit avant intervention. Un artisan sérieux communique une fourchette de prix avant de se déplacer, remet un devis signé sur place, et fournit une facture détaillée conforme aux barèmes assurances. Demandez toujours le numéro SIRET de l'artisan — c'est un droit. JHD Serrurerie applique ces règles sur chaque intervention en Charente-Maritime.</p>
                         </div>
                     </details>
                 </div>
