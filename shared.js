@@ -75,6 +75,7 @@
         function openMenu() {
             mobileMenu.classList.remove('pointer-events-none');
             mobileMenu.setAttribute('aria-hidden', 'false');
+            menuPanel.removeAttribute('inert');
             menuBackdrop.classList.add('opacity-100');
             menuPanel.classList.remove('translate-x-full');
             menuToggle.setAttribute('aria-expanded', 'true');
@@ -88,6 +89,7 @@
             setTimeout(function () {
                 mobileMenu.classList.add('pointer-events-none');
                 mobileMenu.setAttribute('aria-hidden', 'true');
+                menuPanel.setAttribute('inert', '');
             }, 300);
         }
         menuToggle.addEventListener('click', openMenu);
