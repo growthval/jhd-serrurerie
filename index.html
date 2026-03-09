@@ -325,6 +325,8 @@
         .reviews-btn { width: 40px; height: 40px; border-radius: 9999px; background: white; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1.5px solid rgba(27,67,50,0.12); flex-shrink: 0; color: #1B4332; box-shadow: 0 2px 12px rgba(27,67,50,0.1); transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; }
         .reviews-btn:hover { background: #1B4332; color: white; transform: scale(1.05); box-shadow: 0 4px 20px rgba(27,67,50,0.25); }
         .reviews-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+        .a2p-badge { position:absolute; z-index:20; bottom:-20px; left:-40px; transform:rotate(-8deg); }
+        @media (max-width:767px) { .a2p-badge { bottom:auto; top:256px; left:50%; transform:translateX(-50%); } }
     </style>
 </head>
 <body class="bg-white text-gray-900 font-body antialiased">
@@ -536,7 +538,7 @@
                     </div>
                 </div>
                 <!-- Badge A2P chevauchement coin inférieur gauche -->
-                <div class="absolute z-20" style="bottom:-20px;left:24px;transform:rotate(-8deg)">
+                <div class="a2p-badge">
                     <div class="bg-white rounded-xl text-center" style="padding:14px 18px;box-shadow:0 8px 32px rgba(0,0,0,0.28)">
                         <div class="font-extrabold font-heading" style="color:#E86A10;font-size:26px;line-height:1;letter-spacing:-0.02em">A2P</div>
                         <div class="text-amber-400" style="font-size:15px;line-height:1;margin-top:8px">★★★</div>
