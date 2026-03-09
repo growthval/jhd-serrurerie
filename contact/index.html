@@ -308,18 +308,47 @@
 
     <script src="/shared.js"></script>
     <script>
-    const form=document.getElementById('contact-form');
-    const successMsg=document.getElementById('form-success');
-    form.addEventListener('submit',function(e){
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('form-success');
+    const btn = form.querySelector('button[type="submit"]');
+    const btnHTML = btn.innerHTML;
+
+    form.addEventListener('submit', function(e) {
         e.preventDefault();
-        dataLayer.push({event:'form_submit',form_name:'contact'});
-        form.style.opacity='0.5';
-        form.style.pointerEvents='none';
-        setTimeout(()=>{
-            form.style.display='none';
-            successMsg.classList.remove('hidden');
-            dataLayer.push({event:'form_success',form_name:'contact'});
-        },800);
+        dataLayer.push({event: 'form_submit', form_name: 'contact'});
+
+        btn.disabled = true;
+        btn.textContent = 'Envoi en cours\u2026';
+        form.style.opacity = '0.6';
+        form.style.pointerEvents = 'none';
+
+        fetch('/send.php', { method: 'POST', body: new FormData(form) })
+            .then(function(r) { return r.json(); })
+            .then(function(res) {
+                if (res.success) {
+                    form.style.display = 'none';
+                    successMsg.classList.remove('hidden');
+                    dataLayer.push({event: 'form_success', form_name: 'contact'});
+                } else {
+                    showError(res.error || 'Erreur lors de l\'envoi.');
+                }
+            })
+            .catch(function() { showError('Connexion impossible. Appelez-nous au 06 71 69 75 78.'); });
+
+        function showError(msg) {
+            form.style.opacity = '1';
+            form.style.pointerEvents = 'auto';
+            btn.disabled = false;
+            btn.innerHTML = btnHTML;
+            var err = document.getElementById('form-error');
+            if (!err) {
+                err = document.createElement('p');
+                err.id = 'form-error';
+                err.className = 'mt-3 text-red-600 text-sm font-medium text-center';
+                btn.insertAdjacentElement('afterend', err);
+            }
+            err.textContent = msg;
+        }
     });
     </script>
 </body>
