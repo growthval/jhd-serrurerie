@@ -13,7 +13,7 @@
     function desktopLinks() {
         return PAGES.map(function (p) {
             var a = cur === p.href;
-            return '<a href="' + p.href + '" class="nav-link' + (a ? ' active' : '') + ' text-sm font-bold uppercase tracking-wide ' + (a ? 'text-cta' : 'text-gray-700 hover:text-forest') + '">' + p.label + '</a>';
+            return '<a href="' + p.href + '" class="nav-link' + (a ? ' active' : '') + ' text-sm font-bold uppercase tracking-wide ' + (a ? 'text-cta' : 'text-white/80 hover:text-white') + '">' + p.label + '</a>';
         }).join('');
     }
 
@@ -29,26 +29,25 @@
     /* ---- HEADER ---- */
     var headerEl = document.getElementById('site-header');
     if (headerEl) {
-        headerEl.className = 'fixed top-0 w-full z-50 shadow-[0_1px_12px_rgba(27,67,50,0.06)]';
+        headerEl.className = 'fixed top-0 w-full z-50 shadow-[0_2px_20px_rgba(0,0,0,0.35)]';
         headerEl.innerHTML =
-            '<div class="h-1.5 bg-forest-pale"></div>' +
-            '<div class="bg-white/95 backdrop-blur-md">' +
-                '<div class="max-w-7xl mx-auto flex items-center justify-between px-4 lg:px-6 py-3">' +
-                    '<a href="index.html" class="shrink-0"><img src="brand_assets/logo-jhd.svg" alt="JHD Serrurerie" class="h-16 w-auto"></a>' +
+            '<div class="bg-black">' +
+                '<div class="max-w-6xl mx-auto flex items-center justify-between px-4 lg:px-6 py-3">' +
+                    '<a href="index.html" class="shrink-0"><img src="brand_assets/logo_jhd_blanc.svg" alt="JHD Serrurerie" class="h-14 w-auto"></a>' +
                     '<nav class="hidden lg:flex items-center gap-7" aria-label="Navigation principale">' + desktopLinks() + '</nav>' +
                     '<div class="flex items-center gap-4 shrink-0">' +
                         '<div class="hidden md:block text-right">' +
                             '<div class="flex items-center justify-end gap-1.5 mb-0.5">' +
-                                '<svg class="w-4 h-4 text-forest" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 16l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>' +
-                                '<span class="text-xs font-bold uppercase tracking-wider text-forest">Agr\u00e9\u00e9 Assurances</span>' +
+                                '<svg class="w-4 h-4 text-cta" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 16l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>' +
+                                '<span class="text-xs font-bold uppercase tracking-wider text-white/60">Agr\u00e9\u00e9 Assurances</span>' +
                             '</div>' +
-                            '<span class="font-heading text-2xl font-extrabold text-forest-dark tracking-tight leading-none">07 87 37 28 81</span>' +
+                            '<span class="font-heading text-2xl font-extrabold text-white tracking-tight leading-none">06 71 69 75 78</span>' +
                         '</div>' +
-                        '<a href="tel:0787372881" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'header\'})" class="inline-flex items-center gap-2 bg-cta hover:bg-cta-hover active:bg-cta-light text-white font-bold text-base px-6 py-3 rounded-full transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cta shadow-[0_4px_16px_rgba(232,106,16,0.3)]" aria-label="Appeler JHD Serrurerie au 07 87 37 28 81">' +
+                        '<a href="tel:0671697578" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'header\'})" class="inline-flex items-center gap-2 bg-cta hover:bg-cta-hover active:bg-cta-light text-white font-bold text-base px-6 py-3 rounded-full transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cta shadow-[0_4px_16px_rgba(232,106,16,0.3)]" aria-label="Appeler JHD Serrurerie au 06 71 69 75 78">' +
                             PHONE_SVG + 'APPELER' +
                         '</a>' +
-                        '<button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-surface transition-colors" aria-label="Menu de navigation" aria-expanded="false" aria-controls="mobile-menu">' +
-                            '<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>' +
+                        '<button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors" aria-label="Menu de navigation" aria-expanded="false" aria-controls="mobile-menu">' +
+                            '<svg class="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>' +
                         '</button>' +
                     '</div>' +
                 '</div>' +
@@ -66,8 +65,8 @@
                     '<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>' +
                 '</button>' +
                 mobileLinks() +
-                '<a href="tel:0787372881" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'mobile-menu\'})" class="mt-6 flex items-center justify-center gap-2 bg-cta text-white font-bold py-4 rounded-xl text-lg">' +
-                    PHONE_SVG.replace('w-5 h-5', 'w-5 h-5') + '07 87 37 28 81' +
+                '<a href="tel:0671697578" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'mobile-menu\'})" class="mt-6 flex items-center justify-center gap-2 bg-cta text-white font-bold py-4 rounded-xl text-lg">' +
+                    PHONE_SVG.replace('w-5 h-5', 'w-5 h-5') + '06 71 69 75 78' +
                 '</a>' +
             '</nav>';
         headerEl.insertAdjacentElement('afterend', mobileMenu);
@@ -82,13 +81,12 @@
                 '<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">' +
                     '<div>' +
                         '<div class="flex items-center gap-3 mb-4">' +
-                            '<img src="brand_assets/logo-jhd.svg" alt="JHD Serrurerie" class="h-10 w-auto">' +
-                            '<span class="font-heading text-xl font-bold tracking-wider">SERRURERIE</span>' +
+                            '<img src="brand_assets/logo_jhd_blanc.svg" alt="JHD Serrurerie" class="h-10 w-auto">' +
                         '</div>' +
                         '<p class="text-white/50 text-sm leading-relaxed mb-4">Votre serrurier de confiance en Charente-Maritime. D\u00e9pannage urgence 24h/24, 7j/7.</p>' +
-                        '<a href="tel:0787372881" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'footer\'})" class="inline-flex items-center gap-2 text-cta font-bold hover:text-cta-light transition-colors">' +
+                        '<a href="tel:0671697578" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'footer\'})" class="inline-flex items-center gap-2 text-cta font-bold hover:text-cta-light transition-colors">' +
                             '<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>' +
-                            '07 87 37 28 81' +
+                            '06 71 69 75 78' +
                         '</a>' +
                     '</div>' +
                     '<div>' +

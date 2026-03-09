@@ -48,7 +48,7 @@
     var wrap = document.createElement('div');
     wrap.id = 'shared-sticky-bar';
     wrap.innerHTML =
-        '<a href="tel:0787372881" data-gtm="cta-phone-sticky"' +
+        '<a href="tel:0671697578" data-gtm="cta-phone-sticky"' +
         ' onclick="dataLayer.push({event:\'phone_click\',click_location:\'sticky-bar\'})"' +
         ' class="fixed bottom-4 left-4 right-4 z-50 md:hidden flex items-center gap-2.5 bg-[#111] rounded-full px-3 py-2.5 shadow-[0_8px_32px_rgba(0,0,0,0.4)] border border-white/10"' +
         ' aria-label="Appeler le serrurier urgence">' +
@@ -60,7 +60,7 @@
             '</div>' +
             '<div class="flex-1 min-w-0">' +
                 '<div class="font-heading text-[10px] font-extrabold uppercase tracking-[0.15em] text-white/50">D\u00e9pannage 24/7</div>' +
-                '<div class="font-heading text-base font-extrabold text-white leading-tight">07 87 37 28 81</div>' +
+                '<div class="font-heading text-base font-extrabold text-white leading-tight">06 71 69 75 78</div>' +
             '</div>' +
             '<div class="flex-shrink-0 flex items-center gap-1 bg-green-500/10 border border-green-400/25 rounded-full px-2 py-1">' +
                 '<span class="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0 animate-pulse"></span>' +
