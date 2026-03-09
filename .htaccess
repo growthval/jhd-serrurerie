@@ -1,12 +1,13 @@
 # Réécriture d'URL : suppression de l'extension .html
-Options -MultiViews
+Options +FollowSymLinks -MultiViews
 RewriteEngine On
 
 # Rediriger /page.html vers /page (supprimer .html des URLs entrantes)
 RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
 RewriteRule ^ /%1 [R=301,L]
 
-# Servir /page en lisant /page.html
+# Servir /page.html pour les URLs sans extension
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME}\.html -f
-RewriteRule ^(.*)$ $1.html [L]
+RewriteRule ^(.+)$ $1.html [L]
