@@ -31,7 +31,7 @@
     if (headerEl) {
         headerEl.className = 'fixed top-0 w-full z-50 shadow-[0_2px_20px_rgba(0,0,0,0.35)]';
         headerEl.innerHTML =
-            '<div class="bg-black">' +
+            '<div style="background:#000">' +
                 '<div class="max-w-6xl mx-auto flex items-center justify-between px-4 lg:px-6 py-3">' +
                     '<a href="index.html" class="shrink-0"><img src="brand_assets/logo_jhd_blanc.svg" alt="JHD Serrurerie" class="h-14 w-auto"></a>' +
                     '<nav class="hidden lg:flex items-center gap-7" aria-label="Navigation principale">' + desktopLinks() + '</nav>' +
