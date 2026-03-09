@@ -39,7 +39,7 @@
                         '<div class="hidden md:block text-right">' +
                             '<div class="flex items-center justify-end gap-1.5 mb-0.5">' +
                                 '<svg class="w-4 h-4 text-cta" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 16l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>' +
-                                '<span class="text-xs font-bold uppercase tracking-wider text-white/60">Agr\u00e9\u00e9 Assurances</span>' +
+                                '<span class="text-xs font-bold uppercase tracking-wider text-white">Agr\u00e9\u00e9 Assurances</span>' +
                             '</div>' +
                             '<span class="font-heading text-2xl font-extrabold text-white tracking-tight leading-none">06 71 69 75 78</span>' +
                         '</div>' +
