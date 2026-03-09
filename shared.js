@@ -17,7 +17,17 @@
         '.slide-answer-row.is-animating{background-position:0% center !important;color:#fff !important;}',
         '@keyframes pulse-cta{0%{box-shadow:0 0 0 0 rgba(232,106,16,0.7);}70%{box-shadow:0 0 0 10px rgba(232,106,16,0);}100%{box-shadow:0 0 0 0 rgba(232,106,16,0);}}',
         '.animate-pulse-cta{animation:pulse-cta 2s cubic-bezier(0.4,0,0.6,1) infinite;}',
-        '.scroll-reveal.opacity-100{opacity:1!important;transform:translateY(0)!important;}'
+        '.scroll-reveal.opacity-100{opacity:1!important;transform:translateY(0)!important;}',
+        /* Reviews slider */
+        '.reviews-viewport{overflow:hidden}',
+        '.reviews-track{display:flex;will-change:transform;transition:transform 0.5s cubic-bezier(0.22,1,0.36,1)}',
+        '.review-card{flex:0 0 100%;padding:0 4px;box-sizing:border-box}',
+        '@media(min-width:768px){.review-card{flex:0 0 33.333%;padding:0 8px}}',
+        '.review-dot{width:7px;height:7px;border-radius:9999px;background:rgba(27,67,50,0.18);cursor:pointer;border:none;transition:width 0.3s ease,background 0.3s ease}',
+        '.review-dot.active{width:24px;background:#E86A10}',
+        '.reviews-btn{width:40px;height:40px;border-radius:9999px;background:white;display:flex;align-items:center;justify-content:center;cursor:pointer;border:1.5px solid rgba(27,67,50,0.12);flex-shrink:0;color:#1B4332;box-shadow:0 2px 12px rgba(27,67,50,0.1);transition:background 0.2s ease,color 0.2s ease,transform 0.2s ease,box-shadow 0.2s ease}',
+        '.reviews-btn:hover{background:#1B4332;color:white;transform:scale(1.05);box-shadow:0 4px 20px rgba(27,67,50,0.25)}',
+        '.reviews-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}'
     ].join('');
     document.head.appendChild(style);
 
@@ -108,6 +118,64 @@
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.scroll-reveal').forEach(function (el) { revealObs.observe(el); });
+
+    // --- Reviews slider (location pages — skipped if home page already initialized) ---
+    if (!window.reviewNext) {
+        (function() {
+            var track = document.getElementById('reviews-track');
+            var dotsEl = document.getElementById('reviews-dots');
+            if (!track || !dotsEl) return;
+            var viewport = track.parentElement;
+            var cards = track.querySelectorAll('.review-card');
+            var total = cards.length;
+            var index = 0;
+            var timer;
+            var touchX = 0;
+            function vis() { return window.innerWidth >= 768 ? 3 : 1; }
+            function cardPx() { return viewport.offsetWidth / vis(); }
+            function pages() { return Math.ceil(total / vis()); }
+            function go(i) {
+                var max = total - vis();
+                if (i > max) i = 0;
+                if (i < 0) i = max;
+                index = i;
+                track.style.transform = 'translateX(-' + (index * cardPx()) + 'px)';
+                updateDots();
+            }
+            function updateDots() {
+                var p = Math.floor(index / vis());
+                dotsEl.querySelectorAll('.review-dot').forEach(function(d, i) { d.classList.toggle('active', i === p); });
+            }
+            function buildDots() {
+                dotsEl.innerHTML = '';
+                for (var i = 0; i < pages(); i++) {
+                    (function(page) {
+                        var btn = document.createElement('button');
+                        btn.className = 'review-dot';
+                        btn.setAttribute('aria-label', 'Page ' + (page + 1));
+                        btn.onclick = function() { go(page * vis()); resetTimer(); };
+                        dotsEl.appendChild(btn);
+                    })(i);
+                }
+                updateDots();
+            }
+            function resetTimer() { clearInterval(timer); timer = setInterval(function() { go(index + 1); }, 5000); }
+            window.reviewNext = function() { go(index + 1); resetTimer(); };
+            window.reviewPrev = function() { go(index - 1); resetTimer(); };
+            viewport.addEventListener('touchstart', function(e) { touchX = e.touches[0].clientX; clearInterval(timer); }, { passive: true });
+            viewport.addEventListener('touchend', function(e) {
+                var diff = touchX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 50) { diff > 0 ? reviewNext() : reviewPrev(); } else { resetTimer(); }
+            });
+            buildDots();
+            resetTimer();
+            var resizeTimer;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(function() { buildDots(); go(0); }, 200);
+            });
+        })();
+    }
 
     // --- Slide-answer-row mobile observer ---
     if (window.matchMedia('(max-width:767px)').matches) {
