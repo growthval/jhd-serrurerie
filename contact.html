@@ -35,54 +35,88 @@
     <!-- End Google Tag Manager -->
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Locksmith",
-        "@id": "https://jhd-serrurerie.fr/#business",
-        "name": "JHD Serrurerie",
-        "logo": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
-        "image": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
-        "telephone": "+33787372881",
-        "url": "https://jhd-serrurerie.fr",
-        "description": "Serrurier depannage urgence en Charente-Maritime. Intervention en 20 min a La Rochelle, Ile de Re, Niort et Poitiers.",
-        "areaServed": [
-            {"@type": "City", "name": "La Rochelle"},
-            {"@type": "City", "name": "Ile de Re"},
-            {"@type": "City", "name": "Niort"},
-            {"@type": "City", "name": "Poitiers"}
-        ],
-        "openingHoursSpecification": [
-            {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-                "opens": "00:00",
-                "closes": "23:59"
-            }
-        ],
-        "priceRange": "$$",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "La Rochelle",
-            "addressRegion": "Charente-Maritime",
-            "postalCode": "17000",
-            "addressCountry": "FR"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "46.1591",
-            "longitude": "-1.1520"
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+33787372881",
-            "contactType": "customer service",
-            "availableLanguage": {"@type": "Language", "name": "French"},
-            "hoursAvailable": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-                "opens": "00:00",
-                "closes": "23:59"
-            }
+      "@context": "https://schema.org",
+      "@type": "Locksmith",
+      "@id": "https://jhd-serrurerie.fr/contact#locksmith-contact",
+      "name": "JHD Serrurerie",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
+        "width": 300,
+        "height": 100
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
+        "width": 300,
+        "height": 100
+      },
+      "telephone": "+33787372881",
+      "url": "https://jhd-serrurerie.fr",
+      "description": "Serrurier dépannage urgence en Charente-Maritime. Intervention en 20 min à La Rochelle, Île de Ré, Niort et Poitiers.",
+      "parentOrganization": {"@id": "https://jhd-serrurerie.fr/#business"},
+      "areaServed": [
+        {"@type": "City", "name": "La Rochelle"},
+        {"@type": "City", "name": "Île de Ré"},
+        {"@type": "City", "name": "Niort"},
+        {"@type": "City", "name": "Poitiers"}
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "00:00",
+          "closes": "24:00"
         }
+      ],
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "La Rochelle",
+        "addressRegion": "Charente-Maritime",
+        "postalCode": "17000",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.1591,
+        "longitude": -1.1520
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+33787372881",
+        "contactType": "customer service",
+        "availableLanguage": {"@type": "Language", "name": "French"},
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "00:00",
+          "closes": "24:00"
+        }
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://jhd-serrurerie.fr/"},
+        {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://jhd-serrurerie.fr/contact"}
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ContactPage",
+      "@id": "https://jhd-serrurerie.fr/contact#webpage",
+      "url": "https://jhd-serrurerie.fr/contact",
+      "name": "Contact – JHD Serrurerie Charente-Maritime",
+      "description": "Contactez JHD Serrurerie pour un dépannage urgence 24h/24. Serrurier agréé assurances à La Rochelle, Île de Ré, Niort et Poitiers.",
+      "inLanguage": "fr-FR",
+      "isPartOf": {"@id": "https://jhd-serrurerie.fr/#website"},
+      "about": {"@id": "https://jhd-serrurerie.fr/#business"}
     }
     </script>
     <style>

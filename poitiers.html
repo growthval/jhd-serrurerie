@@ -37,55 +37,74 @@
 
     <script type="application/ld+json">
     {
-        "@context": "https://schema.org",
-        "@type": "Locksmith",
-        "@id": "https://jhd-serrurerie.fr/#business",
-        "name": "JHD Serrurerie",
-        "logo": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
-        "image": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
-        "telephone": "+33787372881",
-        "url": "https://jhd-serrurerie.fr",
-        "description": "Serrurier dépannage urgence à Poitiers. Ouverture de porte, changement de serrure, mise en sécurité. Intervention en 20 min.",
-        "areaServed": [
-            {"@type": "City", "name": "Poitiers"},
-            {"@type": "City", "name": "Buxerolles"},
-            {"@type": "City", "name": "Saint-Benoit"},
-            {"@type": "City", "name": "Fontaine-le-Comte"},
-            {"@type": "City", "name": "Migne-Auxances"}
-        ],
-        "openingHoursSpecification": [
-            {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-                "opens": "00:00",
-                "closes": "23:59"
-            }
-        ],
-        "priceRange": "$$",
-        "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Poitiers",
-            "addressRegion": "Vienne",
-            "postalCode": "86000",
-            "addressCountry": "FR"
-        },
-        "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "46.5802",
-            "longitude": "0.3404"
-        },
-        "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+33787372881",
-            "contactType": "customer service",
-            "availableLanguage": {"@type": "Language", "name": "French"},
-            "hoursAvailable": {
-                "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-                "opens": "00:00",
-                "closes": "23:59"
-            }
+      "@context": "https://schema.org",
+      "@type": "Locksmith",
+      "@id": "https://jhd-serrurerie.fr/poitiers#locksmith-poitiers",
+      "name": "JHD Serrurerie – Poitiers",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
+        "width": 300,
+        "height": 100
+      },
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://jhd-serrurerie.fr/brand_assets/logo-jhd.svg",
+        "width": 300,
+        "height": 100
+      },
+      "telephone": "+33787372881",
+      "url": "https://jhd-serrurerie.fr/poitiers",
+      "description": "Serrurier dépannage urgence à Poitiers. Ouverture de porte, changement de serrure, mise en sécurité. Intervention en 20 min.",
+      "parentOrganization": {"@id": "https://jhd-serrurerie.fr/#business"},
+      "areaServed": [
+        {"@type": "City", "name": "Poitiers"},
+        {"@type": "City", "name": "Buxerolles"},
+        {"@type": "City", "name": "Saint-Benoît"},
+        {"@type": "City", "name": "Fontaine-le-Comte"},
+        {"@type": "City", "name": "Migné-Auxances"}
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "00:00",
+          "closes": "24:00"
         }
+      ],
+      "priceRange": "$$",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Poitiers",
+        "addressRegion": "Vienne",
+        "postalCode": "86000",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 46.5802,
+        "longitude": 0.3404
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+33787372881",
+        "contactType": "customer service",
+        "availableLanguage": {"@type": "Language", "name": "French"},
+        "hoursAvailable": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+          "opens": "00:00",
+          "closes": "24:00"
+        }
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "bestRating": "5",
+        "worstRating": "1",
+        "ratingCount": "3",
+        "reviewCount": "3"
+      }
     }
     </script>
     <script type="application/ld+json">
@@ -95,46 +114,6 @@
         "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": "Accueil", "item": "https://jhd-serrurerie.fr/"},
             {"@type": "ListItem", "position": 2, "name": "Serrurier Poitiers", "item": "https://jhd-serrurerie.fr/poitiers"}
-        ]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": "Quel est le prix pour une ouverture de porte a Poitiers ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Pour une ouverture de porte claquée à Poitiers, le tarif démarre à 80€ TTC. Pour une porte verrouillée (clé à l'intérieur ou perdue), comptez à partir de 120€ TTC. Un changement de serrure standard commence à 150€ TTC, pose incluse. Ces tarifs sont conformes aux barèmes des assurances habitation. Le devis exact est établi par écrit sur place, avant toute intervention."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Combien de temps pour arriver chez moi a Poitiers ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Grace a notre proximite locale, nous arrivons generalement en 20 a 30 minutes, que vous soyez au centre-ville ou en peripherie (Buxerolles, Saint-Benoit, Fontaine-le-Comte, Migne-Auxances)."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Êtes-vous agréé par mon assurance ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Oui, nos factures sont conformes aux barèmes des assurances (Carte bancaire ou Habitation) pour vous garantir un remboursement en cas de perte de clé, vol ou effraction."
-                }
-            },
-            {
-                "@type": "Question",
-                "name": "Comment se faire rembourser par son assurance après un dépannage serrurier ?",
-                "acceptedAnswer": {
-                    "@type": "Answer",
-                    "text": "Conservez la facture remise par notre serrurier, établie selon les barèmes agréés. Contactez votre assureur et invoquez la clause assistance domicile (porte claquée) ou bris de serrure (effraction). Transmettez la facture et le constat si applicable. Le remboursement intervient généralement sous 15 à 30 jours. Pour une porte claquée simple, la prise en charge est totale dans la majorité des contrats habitation."
-                }
-            }
         ]
     }
     </script>
