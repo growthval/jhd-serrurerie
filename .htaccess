@@ -3,8 +3,8 @@ Options +FollowSymLinks -MultiViews
 DirectorySlash Off
 RewriteEngine On
 
-# Rediriger /page.html et /page/ vers /page (URLs canoniques sans slash ni .html)
-RewriteCond %{THE_REQUEST} /([^.]+)\.html [NC]
-RewriteRule ^ /%1 [R=301,L]
+# Rediriger /page.html → /page
+RewriteRule ^(.+)\.html$ /$1 [R=301,L,NC]
 
+# Rediriger /page/ → /page
 RewriteRule ^([^/]+)/$ /$1 [R=301,L]
