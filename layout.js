@@ -1,14 +1,14 @@
 (function () {
     var PAGES = [
-        { href: 'index.html', label: 'Accueil' },
-        { href: 'la-rochelle.html', label: 'La Rochelle' },
-        { href: 'ile-de-re.html', label: '\u00cele de R\u00e9' },
-        { href: 'niort.html', label: 'Niort' },
-        { href: 'poitiers.html', label: 'Poitiers' },
-        { href: 'contact.html', label: 'Contact' },
+        { href: '/', label: 'Accueil' },
+        { href: '/la-rochelle', label: 'La Rochelle' },
+        { href: '/ile-de-re', label: '\u00cele de R\u00e9' },
+        { href: '/niort', label: 'Niort' },
+        { href: '/poitiers', label: 'Poitiers' },
+        { href: '/contact', label: 'Contact' },
     ];
 
-    var cur = (window.location.pathname.split('/').pop() || 'index.html') || 'index.html';
+    var cur = window.location.pathname.replace(/\/$/, '') || '/';
 
     function desktopLinks() {
         return PAGES.map(function (p) {
@@ -33,7 +33,7 @@
         headerEl.innerHTML =
             '<div style="background:#000">' +
                 '<div class="max-w-6xl mx-auto flex items-center justify-between px-4 lg:px-6 py-3">' +
-                    '<a href="index.html" class="shrink-0"><img src="brand_assets/logo_jhd_blanc.svg" alt="JHD Serrurerie" class="h-14 w-auto"></a>' +
+                    '<a href="/" class="shrink-0"><img src="/brand_assets/logo_jhd_blanc.svg" alt="JHD Serrurerie" class="h-14 w-auto"></a>' +
                     '<nav class="hidden lg:flex items-center gap-7" aria-label="Navigation principale">' + desktopLinks() + '</nav>' +
                     '<div class="flex items-center gap-4 shrink-0">' +
                         '<div class="hidden md:block text-right">' +
@@ -81,7 +81,7 @@
                 '<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">' +
                     '<div>' +
                         '<div class="flex items-center gap-3 mb-4">' +
-                            '<img src="brand_assets/logo_jhd_blanc.svg" alt="JHD Serrurerie" class="h-10 w-auto">' +
+                            '<img src="/brand_assets/logo_jhd_blanc.svg" alt="JHD Serrurerie" class="h-10 w-auto">' +
                         '</div>' +
                         '<p class="text-white/50 text-sm leading-relaxed mb-4">Votre serrurier de confiance en Charente-Maritime. D\u00e9pannage urgence 24h/24, 7j/7.</p>' +
                         '<a href="tel:0671697578" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'footer\'})" class="inline-flex items-center gap-2 text-cta font-bold hover:text-cta-light transition-colors">' +
@@ -92,21 +92,21 @@
                     '<div>' +
                         '<h4 class="font-heading text-sm font-bold uppercase tracking-wider mb-4 text-white/70">Navigation</h4>' +
                         '<ul class="space-y-2.5">' +
-                            '<li><a href="index.html" class="text-white/50 hover:text-white text-sm transition-colors">Accueil</a></li>' +
-                            '<li><a href="la-rochelle.html" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier La Rochelle</a></li>' +
-                            '<li><a href="ile-de-re.html" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier \u00cele de R\u00e9</a></li>' +
-                            '<li><a href="niort.html" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier Niort</a></li>' +
-                            '<li><a href="poitiers.html" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier Poitiers</a></li>' +
-                            '<li><a href="contact.html" class="text-white/50 hover:text-white text-sm transition-colors">Contact</a></li>' +
+                            '<li><a href="/" class="text-white/50 hover:text-white text-sm transition-colors">Accueil</a></li>' +
+                            '<li><a href="/la-rochelle" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier La Rochelle</a></li>' +
+                            '<li><a href="/ile-de-re" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier \u00cele de R\u00e9</a></li>' +
+                            '<li><a href="/niort" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier Niort</a></li>' +
+                            '<li><a href="/poitiers" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier Poitiers</a></li>' +
+                            '<li><a href="/contact" class="text-white/50 hover:text-white text-sm transition-colors">Contact</a></li>' +
                         '</ul>' +
                     '</div>' +
                     '<div>' +
                         '<h4 class="font-heading text-sm font-bold uppercase tracking-wider mb-4 text-white/70">Zones d\'intervention</h4>' +
                         '<ul class="space-y-2.5">' +
-                            '<li><a href="la-rochelle.html" class="text-white/50 hover:text-white text-sm transition-colors">La Rochelle (17)</a></li>' +
-                            '<li><a href="ile-de-re.html" class="text-white/50 hover:text-white text-sm transition-colors">\u00cele de R\u00e9 (17)</a></li>' +
-                            '<li><a href="niort.html" class="text-white/50 hover:text-white text-sm transition-colors">Niort (79)</a></li>' +
-                            '<li><a href="poitiers.html" class="text-white/50 hover:text-white text-sm transition-colors">Poitiers (86)</a></li>' +
+                            '<li><a href="/la-rochelle" class="text-white/50 hover:text-white text-sm transition-colors">La Rochelle (17)</a></li>' +
+                            '<li><a href="/ile-de-re" class="text-white/50 hover:text-white text-sm transition-colors">\u00cele de R\u00e9 (17)</a></li>' +
+                            '<li><a href="/niort" class="text-white/50 hover:text-white text-sm transition-colors">Niort (79)</a></li>' +
+                            '<li><a href="/poitiers" class="text-white/50 hover:text-white text-sm transition-colors">Poitiers (86)</a></li>' +
                         '</ul>' +
                     '</div>' +
                     '<div>' +
