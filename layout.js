@@ -122,8 +122,9 @@
                         '</div>' +
                     '</div>' +
                 '</div>' +
-                '<div class="border-t border-white/10 pt-6 text-center">' +
-                    '<p class="text-white/30 text-xs">&copy; 2026 JHD Serrurerie. Tous droits r\u00e9serv\u00e9s.</p>' +
+                '<div class="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-center">' +
+                    '<p class="text-white/30 text-xs">&copy; ' + new Date().getFullYear() + ' JHD Serrurerie \u2014 SIRET 992\u00a0734\u00a0632\u00a000019</p>' +
+                    '<a href="/mentions-legales" class="text-white/40 hover:text-white text-xs transition-colors">Mentions l\u00e9gales</a>' +
                 '</div>' +
             '</div>';
     }

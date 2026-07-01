@@ -185,6 +185,7 @@
                         <div class="bg-white rounded-2xl p-8 md:p-10 shadow-[0_4px_20px_rgba(27,67,50,0.06)]">
                             <h2 class="font-heading text-2xl font-bold text-forest mb-6">Envoyez-nous un message</h2>
                             <form id="contact-form" data-gtm="contact-form" novalidate>
+                                <input type="text" name="company" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
                                 <div class="grid sm:grid-cols-2 gap-5 mb-5">
                                     <div>
                                         <label for="name" class="block text-sm font-semibold text-gray-700 mb-1.5">Nom *</label>
@@ -322,7 +323,8 @@
         form.style.opacity = '0.6';
         form.style.pointerEvents = 'none';
 
-        fetch('/send.php', { method: 'POST', body: new FormData(form) })
+        var payload = Object.fromEntries(new FormData(form).entries());
+        fetch('/api/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
             .then(function(r) { return r.json(); })
             .then(function(res) {
                 if (res.success) {
