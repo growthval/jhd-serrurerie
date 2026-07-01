@@ -91,6 +91,53 @@ function renderEmail(v) {
 </body></html>`;
 }
 
+const BUSINESS_PHONE = '06 71 69 75 78';
+const BUSINESS_PHONE_HREF = '0671697578';
+
+// Accusé de réception envoyé au prospect qui a rempli le formulaire.
+// Valeurs `v.name`, `v.city`, `v.message` déjà échappées par l'appelant.
+function renderAckEmail(v) {
+  return `<!DOCTYPE html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#f4f4f5;">
+  <div style="display:none;max-height:0;overflow:hidden;opacity:0;">Nous avons bien reçu votre demande. Un serrurier JHD vous rappelle.</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f4f5;padding:24px 12px;">
+    <tr><td align="center">
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;">
+        <tr><td style="background:#1B4332;padding:26px 32px;">
+          <table role="presentation" width="100%"><tr>
+            <td style="color:#ffffff;font-size:20px;font-weight:bold;">JHD Serrurerie</td>
+            <td align="right" style="color:#E86A10;font-size:12px;font-weight:bold;text-transform:uppercase;letter-spacing:0.08em;">Serrurier 24h/24</td>
+          </tr></table>
+        </td></tr>
+        <tr><td style="height:4px;background:#E86A10;font-size:0;line-height:0;">&nbsp;</td></tr>
+        <tr><td style="padding:32px 32px 4px;">
+          <p style="margin:0;color:#1B4332;font-size:20px;font-weight:bold;">Votre demande est bien arrivée</p>
+          <p style="margin:14px 0 0;color:#374151;font-size:16px;line-height:1.6;">Bonjour ${v.name},<br>Merci de votre message. Un serrurier JHD vous rappelle <strong>dans les plus brefs délais</strong> pour votre intervention.</p>
+        </td></tr>
+        <tr><td style="padding:20px 32px 4px;">
+          <div style="padding:16px 18px;background:#f7f7f5;border-radius:12px;">
+            <div style="color:#9ca3af;font-size:12px;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:8px;">Récapitulatif de votre demande</div>
+            <div style="color:#374151;font-size:14px;line-height:1.6;"><strong>Ville :</strong> ${v.city}<br><strong>Votre message :</strong><br>${v.message}</div>
+          </div>
+        </td></tr>
+        <tr><td style="padding:24px 32px 8px;" align="center">
+          <p style="margin:0 0 14px;color:#111827;font-size:16px;font-weight:bold;">Une urgence ? Appelez-nous tout de suite</p>
+          <table role="presentation" cellpadding="0" cellspacing="0" align="center"><tr>
+            <td align="center" bgcolor="#E86A10" style="border-radius:12px;">
+              <a href="tel:${v.businessPhoneHref}" style="display:inline-block;padding:15px 34px;font-family:Arial,Helvetica,sans-serif;font-size:18px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:12px;">${v.businessPhone}</a>
+            </td>
+          </tr></table>
+        </td></tr>
+        <tr><td style="background:#081C15;padding:20px 32px;">
+          <p style="margin:0;color:rgba(255,255,255,0.55);font-size:12px;line-height:1.6;">JHD Serrurerie · Dépannage serrurerie en Charente-Maritime · jhd-serrurerie.fr<br>Cet e-mail confirme la réception de votre demande.</p>
+        </td></tr>
+      </table>
+    </td></tr>
+  </table>
+</body></html>`;
+}
+
 module.exports = async (req, res) => {
   if (req.method !== 'POST') {
     res.status(405).json({ success: false, error: 'Méthode non autorisée' });
@@ -159,6 +206,29 @@ module.exports = async (req, res) => {
     sentAt: escapeHtml(sentAt),
   });
 
+  const ackText = [
+    'Bonjour ' + name + ',',
+    '',
+    'Merci de votre message. Nous avons bien reçu votre demande et un serrurier JHD vous rappelle dans les plus brefs délais.',
+    '',
+    'Récapitulatif :',
+    'Ville : ' + cityLabel,
+    'Votre message :',
+    message,
+    '',
+    'Une urgence ? Appelez-nous directement au ' + BUSINESS_PHONE + '.',
+    '',
+    'JHD Serrurerie — jhd-serrurerie.fr',
+  ].join('\n');
+
+  const ackHtml = renderAckEmail({
+    name: escapeHtml(name),
+    city: escapeHtml(cityLabel),
+    message: escapeHtml(message).replace(/\n/g, '<br>'),
+    businessPhone: BUSINESS_PHONE,
+    businessPhoneHref: BUSINESS_PHONE_HREF,
+  });
+
   try {
     const r = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -181,6 +251,24 @@ module.exports = async (req, res) => {
       console.error('Resend error', r.status, detail);
       res.status(502).json({ success: false, error: "Erreur lors de l'envoi. Appelez-nous au 06 71 69 75 78." });
       return;
+    }
+
+    // Accusé de réception au prospect — best-effort : n'échoue pas la soumission si ça rate.
+    try {
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + apiKey, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from: 'JHD Serrurerie <contact@jhd-serrurerie.fr>',
+          to: [email],
+          reply_to: 'direction@jocehome.fr',
+          subject: 'Votre demande a bien été reçue — JHD Serrurerie',
+          text: ackText,
+          html: ackHtml,
+        }),
+      });
+    } catch (ackErr) {
+      console.error('Ack email error', ackErr);
     }
 
     res.status(200).json({ success: true });
