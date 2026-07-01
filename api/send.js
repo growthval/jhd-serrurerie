@@ -238,7 +238,7 @@ module.exports = async (req, res) => {
       },
       body: JSON.stringify({
         from: 'JHD Serrurerie <contact@jhd-serrurerie.fr>',
-        to: ['direction@jocehome.fr', 'lejaultvalentinpro@gmail.com'],
+        to: ['direction@jocehome.fr'],
         reply_to: email,
         subject: 'Nouvelle demande de ' + subjectName + ' — JHD Serrurerie',
         text: text,
