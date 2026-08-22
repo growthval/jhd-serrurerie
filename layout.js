@@ -41,9 +41,9 @@
                                 '<svg class="w-4 h-4 text-cta" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 16l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>' +
                                 '<span class="text-xs font-bold uppercase tracking-wider text-white">Agr\u00e9\u00e9 Assurances</span>' +
                             '</div>' +
-                            '<span class="font-heading text-2xl font-extrabold text-white tracking-tight leading-none">06 71 69 75 78</span>' +
+                            '<span class="font-heading text-2xl font-extrabold text-white tracking-tight leading-none">06 20 82 07 88</span>' +
                         '</div>' +
-                        '<a href="tel:0671697578" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'header\'})" class="inline-flex items-center gap-2 bg-cta hover:bg-cta-hover active:bg-cta-light text-white font-bold text-base px-6 py-3 rounded-full transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cta shadow-[0_4px_16px_rgba(232,106,16,0.3)]" aria-label="Appeler JHD Serrurerie au 06 71 69 75 78">' +
+                        '<a href="tel:0620820788" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'header\'})" class="inline-flex items-center gap-2 bg-cta hover:bg-cta-hover active:bg-cta-light text-white font-bold text-base px-6 py-3 rounded-full transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cta shadow-[0_4px_16px_rgba(232,106,16,0.3)]" aria-label="Appeler JHD Serrurerie au 06 20 82 07 88">' +
                             PHONE_SVG + 'APPELER' +
                         '</a>' +
                         '<button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors" aria-label="Menu de navigation" aria-expanded="false" aria-controls="mobile-menu">' +
@@ -65,8 +65,8 @@
                     '<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>' +
                 '</button>' +
                 mobileLinks() +
-                '<a href="tel:0671697578" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'mobile-menu\'})" class="mt-6 flex items-center justify-center gap-2 bg-cta text-white font-bold py-4 rounded-xl text-lg">' +
-                    PHONE_SVG.replace('w-5 h-5', 'w-5 h-5') + '06 71 69 75 78' +
+                '<a href="tel:0620820788" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'mobile-menu\'})" class="mt-6 flex items-center justify-center gap-2 bg-cta text-white font-bold py-4 rounded-xl text-lg">' +
+                    PHONE_SVG.replace('w-5 h-5', 'w-5 h-5') + '06 20 82 07 88' +
                 '</a>' +
             '</nav>';
         headerEl.insertAdjacentElement('afterend', mobileMenu);
@@ -84,9 +84,9 @@
                             '<img src="/brand_assets/logo_jhd_blanc.svg" alt="JHD Serrurerie" class="h-10 w-auto">' +
                         '</div>' +
                         '<p class="text-white/50 text-sm leading-relaxed mb-4">Votre serrurier de confiance en Charente-Maritime. D\u00e9pannage urgence 24h/24, 7j/7.</p>' +
-                        '<a href="tel:0671697578" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'footer\'})" class="inline-flex items-center gap-2 text-cta font-bold hover:text-cta-light transition-colors">' +
+                        '<a href="tel:0620820788" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'footer\'})" class="inline-flex items-center gap-2 text-cta font-bold hover:text-cta-light transition-colors">' +
                             '<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>' +
-                            '06 71 69 75 78' +
+                            '06 20 82 07 88' +
                         '</a>' +
                     '</div>' +
                     '<div>' +

@@ -91,8 +91,8 @@ function renderEmail(v) {
 </body></html>`;
 }
 
-const BUSINESS_PHONE = '06 71 69 75 78';
-const BUSINESS_PHONE_HREF = '0671697578';
+const BUSINESS_PHONE = '06 20 82 07 88';
+const BUSINESS_PHONE_HREF = '0620820788';
 
 // Accusé de réception envoyé au prospect qui a rempli le formulaire.
 // Valeurs `v.name`, `v.city`, `v.message` déjà échappées par l'appelant.
@@ -147,7 +147,7 @@ module.exports = async (req, res) => {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error('RESEND_API_KEY manquante');
-    res.status(500).json({ success: false, error: "Erreur de configuration. Appelez-nous au 06 71 69 75 78." });
+    res.status(500).json({ success: false, error: "Erreur de configuration. Appelez-nous au 06 20 82 07 88." });
     return;
   }
 
@@ -249,7 +249,7 @@ module.exports = async (req, res) => {
     if (!r.ok) {
       const detail = await r.text();
       console.error('Resend error', r.status, detail);
-      res.status(502).json({ success: false, error: "Erreur lors de l'envoi. Appelez-nous au 06 71 69 75 78." });
+      res.status(502).json({ success: false, error: "Erreur lors de l'envoi. Appelez-nous au 06 20 82 07 88." });
       return;
     }
 
@@ -274,6 +274,6 @@ module.exports = async (req, res) => {
     res.status(200).json({ success: true });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ success: false, error: "Erreur lors de l'envoi. Appelez-nous au 06 71 69 75 78." });
+    res.status(500).json({ success: false, error: "Erreur lors de l'envoi. Appelez-nous au 06 20 82 07 88." });
   }
 };
