@@ -1,26 +1,31 @@
 (function () {
     var PAGES = [
-        { href: '/', label: 'Accueil' },
         { href: '/la-rochelle', label: 'La Rochelle' },
         { href: '/ile-de-re', label: '\u00cele de R\u00e9' },
         { href: '/niort', label: 'Niort' },
         { href: '/poitiers', label: 'Poitiers' },
+        { href: '/menuiserie-la-rochelle', label: 'Menuiserie' },
         { href: '/contact', label: 'Contact' },
     ];
 
     var cur = window.location.pathname.replace(/\/$/, '') || '/';
 
+    /* ---- PHONE: menuiserie number (Jonathan Roger) on its page, serrurerie number (Dylan Glorian) everywhere else ---- */
+    var TEL = cur === '/menuiserie-la-rochelle'
+        ? { affiche: '06 71 69 75 78', href: 'tel:+33671697578', aria: 'Appeler JHD Menuiserie au 06 71 69 75 78', accroche: 'Portes d\'entrée, pergolas, portails et clôtures à La Rochelle et sur l\'île de Ré.', badge: '<span class="text-xs font-bold uppercase tracking-wider text-white">Menuiserie</span>' }
+        : { affiche: '06 20 82 07 88', href: 'tel:0620820788', aria: 'Appeler JHD Serrurerie au 06 20 82 07 88', accroche: 'Votre serrurier de confiance en Charente-Maritime. Dépannage urgence 24h/24, 7j/7.', badge: '<svg class="w-4 h-4 text-cta" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 16l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>' + '<span class="text-xs font-bold uppercase tracking-wider text-white">Agréé Assurances</span>' };
+
     function desktopLinks() {
         return PAGES.map(function (p) {
             var a = cur === p.href;
-            return '<a href="' + p.href + '" class="nav-link' + (a ? ' active' : '') + ' text-sm font-bold uppercase tracking-wide ' + (a ? 'text-cta' : 'text-white/80 hover:text-white') + '">' + p.label + '</a>';
+            return '<a href="' + p.href + '" class="nav-link' + (a ? ' active' : '') + ' whitespace-nowrap text-sm font-bold uppercase tracking-wide ' + (a ? 'text-cta' : 'text-white/80 hover:text-white') + '">' + p.label + '</a>';
         }).join('');
     }
 
     function mobileLinks() {
         return PAGES.map(function (p) {
             var a = cur === p.href;
-            return '<a href="' + p.href + '" class="py-3 text-lg font-semibold ' + (a ? 'text-cta' : 'text-gray-700') + ' border-b border-gray-100">' + p.label + '</a>';
+            return '<a href="' + p.href + '" class="py-3 text-lg font-semibold ' + (a ? 'text-[#B54C00]' : 'text-gray-700') + ' border-b border-gray-100">' + p.label + '</a>';
         }).join('');
     }
 
@@ -34,16 +39,15 @@
             '<div style="background:#000">' +
                 '<div class="max-w-6xl mx-auto flex items-center justify-between px-4 lg:px-6 py-3">' +
                     '<a href="/" class="shrink-0"><img src="/brand_assets/logo_jhd_blanc.svg" alt="JHD Serrurerie" class="h-14 w-auto"></a>' +
-                    '<nav class="hidden lg:flex items-center gap-7" aria-label="Navigation principale">' + desktopLinks() + '</nav>' +
+                    '<nav class="hidden lg:flex items-center gap-5 xl:gap-7" aria-label="Navigation principale">' + desktopLinks() + '</nav>' +
                     '<div class="flex items-center gap-4 shrink-0">' +
-                        '<div class="hidden md:block text-right">' +
+                        '<div class="hidden md:block lg:hidden xl:block text-right">' +
                             '<div class="flex items-center justify-end gap-1.5 mb-0.5">' +
-                                '<svg class="w-4 h-4 text-cta" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-1 16l-4-4 1.41-1.41L11 14.17l6.59-6.59L19 9l-8 8z"/></svg>' +
-                                '<span class="text-xs font-bold uppercase tracking-wider text-white">Agr\u00e9\u00e9 Assurances</span>' +
+                                TEL.badge +
                             '</div>' +
-                            '<span class="font-heading text-2xl font-extrabold text-white tracking-tight leading-none">06 20 82 07 88</span>' +
+                            '<span class="font-heading text-2xl font-extrabold text-white tracking-tight leading-none">' + TEL.affiche + '</span>' +
                         '</div>' +
-                        '<a href="tel:0620820788" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'header\'})" class="inline-flex items-center gap-2 bg-cta hover:bg-cta-hover active:bg-cta-light text-white font-bold text-base px-6 py-3 rounded-full transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cta shadow-[0_4px_16px_rgba(232,106,16,0.3)]" aria-label="Appeler JHD Serrurerie au 06 20 82 07 88">' +
+                        '<a href="' + TEL.href + '" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'header\'})" class="inline-flex items-center gap-2 bg-[#B54C00] hover:bg-[#9A4100] text-white font-bold text-base px-6 py-3 rounded-full transition-transform duration-200 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:scale-[1.03] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cta shadow-[0_4px_16px_rgba(232,106,16,0.3)]" aria-label="' + TEL.aria + '">' +
                             PHONE_SVG + 'APPELER' +
                         '</a>' +
                         '<button id="menu-toggle" class="lg:hidden w-10 h-10 flex items-center justify-center rounded-lg hover:bg-white/10 transition-colors" aria-label="Menu de navigation" aria-expanded="false" aria-controls="mobile-menu">' +
@@ -65,8 +69,8 @@
                     '<svg class="w-6 h-6 text-forest" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>' +
                 '</button>' +
                 mobileLinks() +
-                '<a href="tel:0620820788" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'mobile-menu\'})" class="mt-6 flex items-center justify-center gap-2 bg-cta text-white font-bold py-4 rounded-xl text-lg">' +
-                    PHONE_SVG.replace('w-5 h-5', 'w-5 h-5') + '06 20 82 07 88' +
+                '<a href="' + TEL.href + '" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'mobile-menu\'})" class="mt-6 flex items-center justify-center gap-2 bg-[#B54C00] text-white font-bold py-4 rounded-xl text-lg">' +
+                    PHONE_SVG.replace('w-5 h-5', 'w-5 h-5') + TEL.affiche +
                 '</a>' +
             '</nav>';
         headerEl.insertAdjacentElement('afterend', mobileMenu);
@@ -83,10 +87,10 @@
                         '<div class="flex items-center gap-3 mb-4">' +
                             '<img src="/brand_assets/logo_jhd_blanc.svg" alt="JHD Serrurerie" class="h-10 w-auto">' +
                         '</div>' +
-                        '<p class="text-white/50 text-sm leading-relaxed mb-4">Votre serrurier de confiance en Charente-Maritime. D\u00e9pannage urgence 24h/24, 7j/7.</p>' +
-                        '<a href="tel:0620820788" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'footer\'})" class="inline-flex items-center gap-2 text-cta font-bold hover:text-cta-light transition-colors">' +
+                        '<p class="text-white/50 text-sm leading-relaxed mb-4">' + TEL.accroche + '</p>' +
+                        '<a href="' + TEL.href + '" data-gtm="cta-phone" onclick="dataLayer.push({event:\'phone_click\',click_location:\'footer\'})" class="inline-flex items-center gap-2 text-cta font-bold hover:text-cta-light transition-colors">' +
                             '<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>' +
-                            '06 20 82 07 88' +
+                            TEL.affiche +
                         '</a>' +
                     '</div>' +
                     '<div>' +
@@ -97,6 +101,7 @@
                             '<li><a href="/ile-de-re" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier \u00cele de R\u00e9</a></li>' +
                             '<li><a href="/niort" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier Niort</a></li>' +
                             '<li><a href="/poitiers" class="text-white/50 hover:text-white text-sm transition-colors">Serrurier Poitiers</a></li>' +
+                            '<li><a href="/menuiserie-la-rochelle" class="text-white/50 hover:text-white text-sm transition-colors">Menuiserie La Rochelle</a></li>' +
                             '<li><a href="/contact" class="text-white/50 hover:text-white text-sm transition-colors">Contact</a></li>' +
                         '</ul>' +
                     '</div>' +
@@ -123,8 +128,14 @@
                     '</div>' +
                 '</div>' +
                 '<div class="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-3 text-center">' +
-                    '<p class="text-white/30 text-xs">&copy; ' + new Date().getFullYear() + ' JHD Serrurerie \u2014 SIRET 992\u00a0734\u00a0632\u00a000019</p>' +
-                    '<a href="/mentions-legales" class="text-white/40 hover:text-white text-xs transition-colors">Mentions l\u00e9gales</a>' +
+                    '<p class="text-white/60 text-xs">&copy; ' + new Date().getFullYear() + ' JHD Serrurerie \u2014 SIRET 992\u00a0734\u00a0632\u00a000019</p>' +
+                    '<nav aria-label="Informations l\u00e9gales" class="flex flex-wrap items-center justify-center gap-x-4 gap-y-2">' +
+                        '<a href="/mentions-legales" class="text-white/70 hover:text-white text-xs transition-colors">Mentions l\u00e9gales</a>' +
+                        '<a href="/confidentialite" class="text-white/70 hover:text-white text-xs transition-colors">Confidentialit\u00e9</a>' +
+                        '<a href="/cookies" class="text-white/70 hover:text-white text-xs transition-colors">Cookies</a>' +
+                        '<a href="/cgv" class="text-white/70 hover:text-white text-xs transition-colors">CGV</a>' +
+                        '<button type="button" data-consentement="ouvrir" class="text-white/70 hover:text-white text-xs transition-colors underline-offset-2 hover:underline">G\u00e9rer mes cookies</button>' +
+                    '</nav>' +
                 '</div>' +
             '</div>';
     }

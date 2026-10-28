@@ -31,11 +31,9 @@
     ].join('');
     document.head.appendChild(style);
 
-    // --- Random km value (generated once per page load) ---
-    var int = Math.floor(Math.random() * 11) + 1;
-    var dec = Math.floor(Math.random() * 10);
-    var km = dec > 0 ? int + ',' + dec : String(int);
-    var kmLabel = 'serrurier \u00e0 ' + km + 'km';
+    // Pastille de la barre : disponibilit\u00e9 r\u00e9elle (24h/24 confirm\u00e9 par le client le 2026-10-28). Elle affichait une
+    // distance tir\u00e9e au hasard (\u00ab serrurier \u00e0 1,2km \u00bb) : claim invent\u00e9, retir\u00e9 \u00e0 l'\u00e9tape 5b.
+    var pastille = 'Disponible 24h/24';
 
     // --- Replace sticky bar ---
     var oldLinks = document.querySelectorAll('a[href^="tel:"].fixed');
@@ -64,7 +62,7 @@
             '</div>' +
             '<div class="flex-shrink-0 flex items-center gap-1 bg-green-500/10 border border-green-400/25 rounded-full px-2 py-1">' +
                 '<span class="w-1.5 h-1.5 rounded-full bg-green-400 flex-shrink-0 animate-pulse"></span>' +
-                '<span class="km-badge text-green-400 text-[9px] font-bold leading-none whitespace-nowrap">' + kmLabel + '</span>' +
+                '<span class="text-green-400 text-[9px] font-bold leading-none whitespace-nowrap">' + pastille + '</span>' +
             '</div>' +
             '<div class="flex-shrink-0 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">' +
                 '<svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">' +
@@ -73,7 +71,8 @@
             '</div>' +
         '</a>' +
         '<div class="h-20 md:hidden"></div>';
-    document.body.appendChild(wrap);
+    // La page menuiserie porte sa propre barre (devis + appel menuiserie) : pas de barre d'appel serrurerie en plus.
+    if (!document.getElementById('barre-mobile-menuiserie')) document.body.appendChild(wrap);
 
     // --- Menu toggle ---
     var menuToggle = document.getElementById('menu-toggle');
