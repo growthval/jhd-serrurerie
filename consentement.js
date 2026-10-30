@@ -81,14 +81,15 @@
     function construireBandeau() {
         var div = document.createElement('div');
         div.id = 'consentement';
-        div.className = 'fixed inset-x-4 bottom-4 z-[55] mx-auto max-w-3xl bg-white text-gray-800 border border-gray-200 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.18)] p-5 flex flex-col md:flex-row md:items-center gap-4';
+        div.className = 'fixed inset-x-4 bottom-4 z-[55] mx-auto max-w-3xl bg-white text-gray-800 border border-gray-200 rounded-2xl shadow-[0_8px_32px_rgba(0,0,0,0.18)] p-4 md:p-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-4';
+        // Compact sur mobile (2026-10-30) : le texte du bandeau ne doit pas devenir l'élément LCP de la page (vitesse mobile).
         div.setAttribute('role', 'region');
         div.setAttribute('aria-label', 'Consentement aux cookies');
         div.style.display = 'none'; // pas l'attribut hidden : la classe flex l'emporterait sur lui
         div.innerHTML =
             '<div class="flex-1 min-w-0">' +
-                '<p class="font-heading font-bold text-forest mb-1">Cookies et mesure d’audience</p>' +
-                '<p class="text-sm leading-relaxed">Avec votre accord, nous utilisons des cookies de Google (Analytics et Google Ads) pour mesurer la fréquentation du site et l’efficacité de nos annonces. Refuser n’a aucune conséquence sur votre navigation. <a href="' + POLITIQUE + '" class="underline font-semibold text-forest hover:text-forest-light">Le détail des cookies et vos droits</a></p>' +
+                '<p class="font-heading font-bold text-forest text-sm md:text-base mb-1">Cookies et mesure d’audience</p>' +
+                '<p class="text-xs md:text-sm leading-relaxed">Avec votre accord, des cookies de Google (Analytics et Google Ads) mesurent la fréquentation du site et l’efficacité de nos annonces. Refuser est sans conséquence sur votre navigation. <a href="' + POLITIQUE + '" class="underline font-semibold text-forest hover:text-forest-light">Détail et vos droits</a></p>' +
                 '<p data-consentement="etat" class="text-xs text-gray-600 mt-2" hidden></p>' +
             '</div>' +
             '<div class="flex gap-3 shrink-0">' +
