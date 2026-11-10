@@ -18,11 +18,17 @@
     <meta name="twitter:description" content="Serrurier Île de Ré (17) : dépannage urgence en 20 min. Ouverture de porte, changement de serrure. Tarifs agréés assurances. 06 20 82 07 88.">
     <link rel="canonical" href="https://jhd-serrurerie.fr/ile-de-re">
     <link rel="icon" type="image/svg+xml" href="/brand_assets/favicon-jhd.svg">
+    <!-- Police du H1 (élément LCP) préchargée : sous-ensemble latin seul, celui des caractères du titre. -->
+    <link rel="preload" href="/assets/polices/montserrat-variable-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="/assets/polices/polices.css">
     <link rel="stylesheet" href="/styles.css">
 
     <!-- Google Tag Manager (GTM-54WXXDDF) : chargé par /consentement.js, seulement après « Tout accepter » -->
     <script>window.dataLayer = window.dataLayer || [];</script>
+    <!-- Scripts en defer (ne bloquent plus le rendu) ; ordre d'exécution inchangé : layout, shared, puis consentement
+         (qui place le bandeau au-dessus de la barre d'appel créée par shared.js). -->
+    <script src="/layout.js" defer></script>
+    <script src="/shared.js" defer></script>
     <script src="/consentement.js" defer></script>
 
     <script type="application/ld+json">
@@ -188,7 +194,7 @@
                         <span class="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></span>
                         <span class="text-white/90 text-sm font-medium">Serrurier disponible maintenant</span>
                     </div>
-                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-[-0.03em] mb-5" style="animation: fade-up 0.6s 0.1s ease both">
+                    <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-[1.1] tracking-[-0.03em] mb-5">
                         Serrurier Île de Ré&nbsp;: Dépannage Urgence en 20 min
                     </h1>
                     <p class="text-white/80 text-lg md:text-xl leading-relaxed mb-8 font-light" style="animation: fade-up 0.6s 0.2s ease both">
@@ -546,8 +552,6 @@
 
     <!-- FOOTER -->
     <footer id="site-footer"></footer>
-    <script src="layout.js"></script>
 
-    <script src="/shared.js"></script>
 </body>
 </html>
