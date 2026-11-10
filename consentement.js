@@ -1,35 +1,48 @@
 /* ============================================================
-   consentement.js — bandeau de consentement CNIL + Google Tag Manager (GTM-54WXXDDF)
+   consentement.js — bandeau de consentement CNIL, Google Tag Manager (GTM-54WXXDDF) et numéro de transfert Google
+   MODE DE CONSENTEMENT AVANCÉ (décision de Valentin du 2026-11-10, même mécanique que THERMANEX).
    Adapté de _global/snippets/consentement.js (prévu pour GA4 direct) : ce site legacy passe par GTM.
    Intégration (chaque page, dans le <head>) :
-     <script>window.dataLayer = window.dataLayer || [];</script>
-     <script src="/consentement.js" defer></script>
+     1. juste après la balise viewport, le bloc en ligne écrit par _outils/tete-gtm.mjs : dataLayer, mode consentement
+        de Google tout « denied » par défaut (+ wait_for_update), « update » granted si l'accord est déjà mémorisé,
+        puis chargement de GTM — avant tout autre script ;
+     2. <script src="/consentement.js" defer></script> (ce fichier).
    Pied de page (layout.js) : <button type="button" data-consentement="ouvrir">Gérer mes cookies</button>
-   Règles : .claude/rules/conformite-legale.md (point 3).
-   - Aucun appel à Google avant « Tout accepter » ; « Tout refuser » au même niveau, même style.
-   - Mode consentement de Google : tout « denied » par défaut, « granted » à l'accord, avant le chargement de GTM.
-   - Événements poussés avant l'accord (phone_click, form_*) : écartés, jamais rejoués après.
-   - Choix conservé 6 mois, puis redemandé ; retrait à tout moment (cookies Google effacés, page rechargée sans GTM).
-   Conteneur (2026-10-28) : balise Google Ads, Conversion Linker, balise Google GA4, conversion Google Ads « Tel ».
+   Règles : .claude/rules/conformite-legale.md (point 3), écart décidé par Valentin (mode avancé).
+   - GTM est chargé sur chaque page, même sans choix : tant que l'accord n'est pas donné, les balises Google ne lisent
+     ni n'écrivent aucun cookie (signaux sans cookie, modélisation de Google).
+   - « Tout accepter » : ad_storage, analytics_storage, ad_user_data → granted (ad_personalization reste refusé :
+     mesure seulement, ni publicité personnalisée ni remarketing, choix du 2026-10-28). « Tout refuser » au même
+     niveau, même style.
+   - Événements (phone_click, form_submit, form_success) : poussés dans le dataLayer par les pages, gardés même sans
+     accord (plus rien n'est écarté).
+   - Choix conservé 6 mois, puis redemandé ; retrait à tout moment (consentement repassé à denied, cookies Google
+     effacés, sans rechargement).
+   - Numéro de transfert Google (2026-11-10) : pour un visiteur venu d'une annonce Google, Google peut fournir un
+     numéro de transfert qui renvoie vers le 06 20 82 07 88 et compte les appels de 30 s et plus (conversion
+     « Appel depuis le site (numéro Google, 30 s) »). Le texte affiché ET les liens tel: du 06 20 82 07 88 sont alors
+     remplacés partout (en-tête, pied de page, menu mobile, barre d'appel, corps), sauf dans le corps des pages
+     légales (<main data-numero-fixe>). Le 06 71 69 75 78 (menuiserie) n'est jamais touché. Sans annonce : rien ne
+     change. Test : ajouter #google-wcc-debug à l'URL.
+   - CLE et DUREE_MS sont aussi dans _outils/tete-gtm.mjs : les changer aux deux endroits.
+   Conteneur (2026-10-28) : balise Google Ads, Conversion Linker, balise Google GA4, conversion Google Ads « Tel »
+   (déclencheur : liens tel: sauf 671697578, donc aussi le numéro de transfert).
    Classes Tailwind : ce fichier est dans les globs `content` de tailwind.config.js (recompiler après modification).
    ============================================================ */
 (function () {
     'use strict';
 
-    var GTM = 'GTM-54WXXDDF';
     var POLITIQUE = '/cookies';
     var CLE = 'consentement-cookies-jhd';
     var DUREE_MS = 182 * 24 * 60 * 60 * 1000; // 6 mois
     var REFUSE = { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' };
     // Mesure seulement, pas de publicité personnalisée ni de remarketing (Valentin, 2026-10-28) : ad_personalization reste refusé.
     var ACCORDE = { ad_storage: 'granted', ad_user_data: 'granted', ad_personalization: 'denied', analytics_storage: 'granted' };
-    var gtmCharge = false;
     var choixCourant = null; // choix de la page en cours (le stockage peut être bloqué)
     var bandeau = null;
 
     window.dataLayer = window.dataLayer || [];
     function gtag() { window.dataLayer.push(arguments); }
-    gtag('consent', 'default', REFUSE);
 
     // ---- Stockage du choix (indisponible en navigation privée ou si bloqué) ----
     function lireChoix() {
@@ -42,25 +55,6 @@
     }
     function ecrireChoix(valeur) {
         try { window.localStorage.setItem(CLE, JSON.stringify({ valeur: valeur, date: Date.now() })); } catch (e) { /* choix non mémorisé */ }
-    }
-
-    // ---- GTM : chargé seulement après accord ----
-    function chargerGTM() {
-        gtag('consent', 'update', ACCORDE);
-        if (gtmCharge) return;
-        gtmCharge = true;
-        window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtm.js?id=' + GTM;
-        document.head.appendChild(s);
-    }
-
-    // Garde les commandes de consentement, retire les événements poussés sans accord.
-    function ecarterEvenementsSansAccord() {
-        var garde = window.dataLayer.filter(function (m) { return m && m[0] === 'consent'; });
-        window.dataLayer.length = 0;
-        garde.forEach(function (m) { window.dataLayer.push(m); });
     }
 
     function supprimerCookiesGoogle() {
@@ -118,24 +112,23 @@
         var etat = bandeau.querySelector('[data-consentement="etat"]');
         var choix = choixCourant || lireChoix();
         etat.hidden = !choix;
-        etat.textContent = choix === 'accepte' ? 'Choix actuel : cookies acceptés.' : 'Choix actuel : cookies refusés.';
+        etat.textContent = choix === 'accepte' ? 'Choix actuel : cookies acceptés.' : 'Choix actuel : cookies refusés.';
         bandeau.style.display = '';
         placer();
         if (donnerFocus) bandeau.querySelector('[data-choix]').focus();
     }
 
     function choisir(valeur) {
+        var avant = choixCourant;
         choixCourant = valeur;
         ecrireChoix(valeur);
         bandeau.style.display = 'none';
         if (valeur === 'accepte') {
-            if (!gtmCharge) ecarterEvenementsSansAccord();
-            chargerGTM();
+            if (avant !== 'accepte') gtag('consent', 'update', ACCORDE);
         } else {
+            // Les balises Google repassent en mode sans cookie dans la page, sans rechargement.
             gtag('consent', 'update', REFUSE);
             supprimerCookiesGoogle();
-            // GTM déjà chargé dans cette page : on recharge pour qu'il n'y tourne plus du tout.
-            if (gtmCharge) window.location.reload();
         }
     }
 
@@ -145,7 +138,7 @@
             var lien = div.querySelector('a');
             var info = document.createElement('p');
             info.className = 'text-sm text-gray-700 max-w-sm';
-            info.textContent = 'La carte est fournie par Google Maps, qui dépose des cookies : elle ne s’affiche que si vous la demandez.';
+            info.textContent = 'La carte est fournie par Google Maps, qui dépose des cookies : elle ne s’affiche que si vous la demandez.';
             var bouton = document.createElement('button');
             bouton.type = 'button';
             bouton.className = BOUTON;
@@ -166,17 +159,91 @@
         });
     }
 
+    // ---- Numéro de transfert Google (appels venus des annonces, 30 s et plus) ----
+    var AW_ID = 'AW-17790054157';
+    var AW_APPEL = 'AW-17790054157/-GOKCPmcz7UdEI3e-qJC'; // conversion « Appel depuis le site (numéro Google, 30 s) »
+    var NUMERO = '06 20 82 07 88';
+    // Le 06 20 82 07 88 sous toutes ses écritures du site (espaces, insécables, points, +33). Jamais le 06 71 69 75 78.
+    var MOTIF = '(?:\\+33[\\s\\u00a0.]*(?:\\(0\\))?[\\s\\u00a0.]*|0)6[\\s\\u00a0.]*20[\\s\\u00a0.]*82[\\s\\u00a0.]*07[\\s\\u00a0.]*88';
+    var IGNORES = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TEXTAREA: 1, TEMPLATE: 1 };
+    var numeroGoogle = null; // { affiche, href } fourni par Google, seulement pour un visiteur venu d'une annonce
+
+    function contient(texte) { return !!texte && new RegExp(MOTIF).test(texte); }
+    function remplacer(texte, par) { return texte.replace(new RegExp(MOTIF, 'g'), par); }
+    function fixe(noeud) { // corps des pages légales : le numéro de l'éditeur reste le vrai
+        var el = noeud.nodeType === 1 ? noeud : noeud.parentElement;
+        return !!(el && el.closest('[data-numero-fixe]'));
+    }
+
+    function remplacerNumero(racine) {
+        if (!numeroGoogle || !racine) return;
+        if (racine.nodeType === 3) {
+            if (!fixe(racine) && !IGNORES[racine.parentElement && racine.parentElement.tagName] && contient(racine.data)) racine.data = remplacer(racine.data, numeroGoogle.affiche);
+            return;
+        }
+        if (racine.nodeType !== 1 || IGNORES[racine.tagName]) return;
+        var elements = [racine].concat(Array.prototype.slice.call(racine.querySelectorAll('a[href^="tel:"], [aria-label], [title]')));
+        elements.forEach(function (el) {
+            if (fixe(el)) return;
+            var href = el.tagName === 'A' && el.getAttribute('href');
+            if (href && href.indexOf('tel:') === 0 && contient(href)) el.setAttribute('href', numeroGoogle.href);
+            ['aria-label', 'title'].forEach(function (attr) {
+                var v = el.getAttribute(attr);
+                if (contient(v)) el.setAttribute(attr, remplacer(v, numeroGoogle.affiche));
+            });
+        });
+        var parcours = document.createTreeWalker(racine, NodeFilter.SHOW_TEXT, null);
+        var textes = [];
+        while (parcours.nextNode()) textes.push(parcours.currentNode);
+        textes.forEach(function (t) {
+            if (!IGNORES[t.parentElement && t.parentElement.tagName] && !fixe(t) && contient(t.data)) t.data = remplacer(t.data, numeroGoogle.affiche);
+        });
+    }
+
+    // Les blocs injectés plus tard (en-tête et pied de page de layout.js, barre d'appel de shared.js, menu mobile) sont
+    // traités à leur arrivée.
+    var observateur = null;
+    function appliquerNumero() {
+        if (!numeroGoogle || !document.body) return;
+        remplacerNumero(document.body);
+        if (observateur || !window.MutationObserver) return;
+        observateur = new MutationObserver(function (mutations) {
+            mutations.forEach(function (m) { Array.prototype.forEach.call(m.addedNodes, remplacerNumero); });
+        });
+        observateur.observe(document.body, { childList: true, subtree: true });
+    }
+
+    // Appelé par Google seulement s'il fournit un numéro de transfert (visiteur venu d'une annonce, ou #google-wcc-debug).
+    function recevoirNumero(numeroFormate, numeroMobile) {
+        if (!numeroFormate) return;
+        var chiffres = String(numeroMobile || numeroFormate).replace(/[^\d+]/g, '');
+        numeroGoogle = { affiche: String(numeroFormate), href: 'tel:' + chiffres };
+        if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', appliquerNumero);
+        else appliquerNumero();
+    }
+
+    // La commande part une fois la balise Google Ads chargée par GTM (destination AW-17790054157 présente).
+    function configurerNumero(essai) {
+        var gtm = window.google_tag_manager;
+        if (gtm && gtm[AW_ID]) {
+            gtag('config', AW_APPEL, { phone_conversion_number: NUMERO, phone_conversion_callback: recevoirNumero });
+            return;
+        }
+        if (essai < 150) setTimeout(function () { configurerNumero(essai + 1); }, 200); // 30 s au plus
+    }
+
     document.addEventListener('click', function (e) {
         if (e.target.closest('[data-consentement="ouvrir"]')) { e.preventDefault(); afficher(true); }
     });
     window.addEventListener('resize', placer);
 
     // ---- Démarrage ----
+    // L'accord mémorisé a déjà été transmis à Google par le bloc en ligne du <head> (_outils/tete-gtm.mjs).
+    choixCourant = lireChoix();
+    configurerNumero(0);
     function demarrer() {
         preparerCartes();
-        choixCourant = lireChoix();
-        if (choixCourant === 'accepte') chargerGTM();
-        else if (choixCourant === null) afficher(false);
+        if (choixCourant === null) afficher(false);
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', demarrer);
     else demarrer();
