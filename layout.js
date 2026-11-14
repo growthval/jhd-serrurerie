@@ -79,7 +79,8 @@
     /* ---- FOOTER ---- */
     var footerEl = document.getElementById('site-footer');
     if (footerEl) {
-        footerEl.className = 'bg-forest-dark text-white pt-16 pb-8 px-4 md:px-8';
+        // pb-32 sous md : la barre d'appel fixe (shared.js, md:hidden) recouvrait la dernière ligne des liens légaux.
+        footerEl.className = 'bg-forest-dark text-white pt-16 pb-32 md:pb-8 px-4 md:px-8';
         footerEl.innerHTML =
             '<div class="max-w-6xl mx-auto">' +
                 '<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">' +
@@ -134,6 +135,7 @@
                         '<a href="/confidentialite" class="text-white/70 hover:text-white text-xs transition-colors">Confidentialit\u00e9</a>' +
                         '<a href="/cookies" class="text-white/70 hover:text-white text-xs transition-colors">Cookies</a>' +
                         '<a href="/cgv" class="text-white/70 hover:text-white text-xs transition-colors">CGV</a>' +
+                        '<a href="/mentions-legales#mediation" class="text-white/70 hover:text-white text-xs transition-colors">Médiation : CM2C</a>' +
                         '<button type="button" data-consentement="ouvrir" class="text-white/70 hover:text-white text-xs transition-colors underline-offset-2 hover:underline">G\u00e9rer mes cookies</button>' +
                     '</nav>' +
                 '</div>' +
